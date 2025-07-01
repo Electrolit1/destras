@@ -274,6 +274,9 @@
   <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
 </footer>
 
+<!-- Música tranquila de fondo en loop -->
+<audio id="backgroundMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" autoplay loop></audio>
+
 <script>
   function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
@@ -297,6 +300,7 @@
   function mostrarCumple() {
     alert("Mi cumpleaños es el 05 de julio 🎉");
 
+    // Confeti múltiple
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
         confetti({
@@ -307,11 +311,33 @@
       }, i * 400);
     }
 
-    const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-    audio.volume = 0.5;
-    audio.play();
+    // Reproducir canción de cumpleaños corta (5 segundos)
+    const cumpleAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    cumpleAudio.volume = 0.5;
+    cumpleAudio.play();
+
+    // Parar la canción después de 5 segundos
+    setTimeout(() => {
+      cumpleAudio.pause();
+      cumpleAudio.currentTime = 0;
+    }, 5000);
   }
+
+  // Manejo autoplay para backgroundMusic en móviles/navegadores que bloquean
+  window.addEventListener('load', () => {
+    const bgMusic = document.getElementById('backgroundMusic');
+    bgMusic.volume = 0.3;
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        document.body.addEventListener('click', () => {
+          bgMusic.play();
+        }, { once: true });
+      });
+    }
+  });
 </script>
 
 </body>
 </html>
+
