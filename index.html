@@ -296,12 +296,20 @@
 
   function mostrarCumple() {
     alert("Mi cumpleaños es el 05 de julio 🎉");
-    confetti({
-      particleCount: 150,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#e74c3c', '#000000']
-    });
+
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { y: Math.random() * 0.6 }
+        });
+      }, i * 400);
+    }
+
+    const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    audio.volume = 0.5;
+    audio.play();
   }
 </script>
 
