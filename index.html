@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mi Portafolio Mejorado</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -61,7 +62,7 @@
       font-weight: 600;
       padding: 8px 12px;
       border-radius: 5px;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.3s;
     }
 
     .nav-links a:hover {
@@ -142,6 +143,38 @@
       background: #c0392b;
     }
 
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 2rem;
+      margin: 0 15px;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #e74c3c;
+    }
+
+    .birthday-button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .birthday-button:hover {
+      background: #c0392b;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -186,6 +219,7 @@
       <a href="#inicio">Inicio</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#proyectos">Proyectos</a>
+      <a href="#cumple">Cumpleaños</a>
       <a href="#habilidades">Habilidades</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -206,16 +240,19 @@
   <section id="proyectos">
     <h2>Proyectos</h2>
     <p>Actualmente trabajando y creando un servidor (fearmc.xyz)</p>
-
     <div class="project-card">
-      <h3 style="color: #e74c3c; margin-bottom: 10px;">FearMC Network</h3>
-      <p>
-        FearMC es un servidor de Minecraft diseñado para ofrecer una experiencia única, con sistemas personalizados, eventos exclusivos y comunidad activa.
-      </p>
+      <h3 style="color: #e74c3c;">FearMC Network</h3>
+      <p>FearMC es un servidor de Minecraft diseñado para ofrecer una experiencia única, con sistemas personalizados, eventos exclusivos y comunidad activa.</p>
       <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC">
       <br>
       <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord de FearMC</a>
     </div>
+  </section>
+
+  <section id="cumple">
+    <h2>Mi Cumpleaños</h2>
+    <p>¿Quieres saber cuándo es mi cumpleaños?</p>
+    <button class="birthday-button" onclick="mostrarCumple()">Mostrar fecha</button>
   </section>
 
   <section id="habilidades">
@@ -226,6 +263,10 @@
   <section id="contacto">
     <h2>Contacto</h2>
     <p>Puedes escribirme directamente para colaboraciones o ideas de proyectos.</p>
+    <div class="social-icons">
+      <a href="https://discord.gg/TU_DISCORD" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
   </section>
 </main>
 
@@ -252,6 +293,16 @@
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  function mostrarCumple() {
+    alert("Mi cumpleaños es el 05 de julio 🎉");
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#e74c3c', '#000000']
+    });
+  }
 </script>
 
 </body>
