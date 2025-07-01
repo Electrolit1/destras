@@ -274,7 +274,7 @@
   <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
 </footer>
 
-<!-- Música tranquila de fondo en loop -->
+<!-- Música tranquila de fondo en loop y autoplay -->
 <audio id="backgroundMusic" src="https://cdn.jsdelivr.net/gh/estivillam/host-files/bd-condenado-al-exito-blessed.mp3" autoplay loop></audio>
 
 <script>
@@ -312,7 +312,7 @@
       }, i * 400);
     }
 
-    // Reproducir canción de cumpleaños corta (5 segundos)
+    // Reproducir canción corta (5 segundos)
     const cumpleAudio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
     cumpleAudio.volume = 0.5;
     cumpleAudio.play();
@@ -323,13 +323,14 @@
     }, 5000);
   }
 
-  // Configurar volumen medio para la música de fondo
+  // Intentar reproducir música al cargar (puede bloquearse en algunos navegadores)
   window.addEventListener('load', () => {
     const bgMusic = document.getElementById('backgroundMusic');
     bgMusic.volume = 0.5;
     const playPromise = bgMusic.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
+        // Si bloquea, espera un click para iniciar la música
         document.body.addEventListener('click', () => {
           bgMusic.play();
         }, { once: true });
