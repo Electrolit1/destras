@@ -326,6 +326,27 @@
         width: 100%;
       }
     }
+
+    /* Modo mantenimiento overlay */
+    #maintenanceOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(14,14,14,0.95);
+      color: #e74c3c;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 2000;
+      user-select: none;
+      flex-direction: column;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
@@ -416,6 +437,12 @@
     step="0.01"
     aria-label="Control de volumen"
   />
+</div>
+
+<!-- Overlay mantenimiento -->
+<div id="maintenanceOverlay">
+  <p>🚧 Sitio en mantenimiento 🚧</p>
+  <p>Volvemos en un momento, gracias por la paciencia.</p>
 </div>
 
 <script>
@@ -536,8 +563,24 @@
   bgMusic.addEventListener('ended', () => {
     playPauseBtn.textContent = '►';
   });
+
+  // SISTEMA DE MANTENIMIENTO
+  const mantenimientoActivo = true; // Cambia a true para activar mantenimiento
+
+  function toggleMantenimiento(activo) {
+    const overlay = document.getElementById('maintenanceOverlay');
+    if (activo) {
+      overlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // bloquea scroll
+    } else {
+      overlay.style.display = 'none';
+      document.body.style.overflow = ''; // permite scroll
+    }
+  }
+
+  // Activar o desactivar mantenimiento según la variable
+  toggleMantenimiento(mantenimientoActivo);
 </script>
 
 </body>
 </html>
-
