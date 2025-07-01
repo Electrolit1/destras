@@ -275,7 +275,7 @@
 </footer>
 
 <!-- Música tranquila de fondo en loop -->
-<audio id="backgroundMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" autoplay loop></audio>
+<audio id="backgroundMusic" src="https://cdn.jsdelivr.net/gh/estivillam/host-files/bd-condenado-al-exito-blessed.mp3" autoplay loop></audio>
 
 <script>
   function toggleMenu() {
@@ -306,7 +306,8 @@
         confetti({
           particleCount: 150,
           spread: 100,
-          origin: { y: Math.random() * 0.6 }
+          origin: { y: Math.random() * 0.6 },
+          colors: ['#e74c3c', '#000000']
         });
       }, i * 400);
     }
@@ -316,17 +317,16 @@
     cumpleAudio.volume = 0.5;
     cumpleAudio.play();
 
-    // Parar la canción después de 5 segundos
     setTimeout(() => {
       cumpleAudio.pause();
       cumpleAudio.currentTime = 0;
     }, 5000);
   }
 
-  // Manejo autoplay para backgroundMusic en móviles/navegadores que bloquean
+  // Configurar volumen medio para la música de fondo
   window.addEventListener('load', () => {
     const bgMusic = document.getElementById('backgroundMusic');
-    bgMusic.volume = 0.3;
+    bgMusic.volume = 0.5;
     const playPromise = bgMusic.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
@@ -340,4 +340,3 @@
 
 </body>
 </html>
-
