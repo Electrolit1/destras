@@ -1,1 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Portafolio Mejorado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0e0e0e;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1e1e2f;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav {
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #e74c3c;
+    }
+
+    .menu-btn {
+      display: none;
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+    .menu-btn:hover {
+      background: #c0392b;
+    }
+
+    main {
+      padding: 100px 20px 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      padding: 40px 30px;
+      border-radius: 12px;
+      background: #1a1a1a;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #e74c3c;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .project-card {
+      margin-top: 30px;
+      padding: 20px;
+      background: #121212;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .project-card img {
+      width: 120px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .project-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #e74c3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .project-card a:hover {
+      background: #c0392b;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 2rem;
+      margin: 0 15px;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #e74c3c;
+    }
+
+    .birthday-button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .birthday-button:hover {
+      background: #c0392b;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e1e2f;
+      color: white;
+      user-select: none;
+    }
+
+    /* Estilos para el control de audio */
+    #audioControls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #e74c3c;
+      font-weight: bold;
+      user-select: none;
+      z-index: 1100;
+      max-width: 400px;
+      width: 90%;
+      box-sizing: border-box;
+    }
+
+    #playPauseBtn {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #playPauseBtn:hover {
+      background: #c0392b;
+    }
+
+    #progressBar {
+      flex: 1;
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #555;
+      cursor: pointer;
+    }
+    #progressBar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #e74c3c;
+      cursor: pointer;
+      border: none;
+      margin-top: -4px;
+      transition: background 0.3s;
+    }
+    #progressBar::-webkit-slider-thumb:hover {
+      background: #c0392b;
+    }
+    #progressBar::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #e74c3c;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s;
+    }
+    #progressBar::-moz-range-thumb:hover {
+      background: #c0392b;
+    }
+
+    #volumeControl {
+      width: 100px;
+      cursor: pointer;
+    }
+    #volumeControl::-webkit-slider-thumb {
+      background: #e74c3c !important;
+    }
+
+    /* Responsive para móviles */
+    @media (max-width: 480px) {
+      main {
+        padding: 90px 15px 50px 15px;
+      }
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #1a1a1a;
+        flex-direction: column;
+        width: 200px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        border-radius: 0 0 0 10px;
+        box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+        padding-top: 20px;
+        gap: 10px;
+        z-index: 1050;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .menu-btn {
+        display: block;
+      }
+
+      #audioControls {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 16px;
+        max-width: 320px;
+        width: 95%;
+      }
+
+      #playPauseBtn {
+        padding: 14px 18px;
+        font-size: 1.6rem;
+      }
+
+      #progressBar {
+        width: 100%;
+        height: 8px;
+      }
+      #progressBar::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+        margin-top: -6px;
+      }
+      #progressBar::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+      }
+
+      #volumeControl {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Este es mi portafolio</div>
+  <button class="menu-btn" aria-label="Menú" onclick="toggleMenu()">☰</button>
+  <nav>
+    <div class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#cumple">Cumpleaños</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio">
+    <h2>¡Hola! Soy Destras</h2>
+    <p>Bienvenido a mi portafolio donde comparto mis proyectos y habilidades.</p>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre mí</h2>
+    <p>Apasionado a crear servidores de Minecraft y configuraciones de bots en Discord.</p>
+  </section>
+
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <p>Actualmente trabajando y creando un servidor (fearmc.xyz)</p>
+    <div class="project-card">
+      <h3 style="color: #e74c3c;">FearMC Network</h3>
+      <p>FearMC es un servidor de Minecraft diseñado para ofrecer una experiencia única, con sistemas personalizados, eventos exclusivos y comunidad activa.</p>
+      <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC" />
+      <br />
+      <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord de FearMC</a>
+    </div>
+  </section>
+
+  <section id="cumple">
+    <h2>Mi Cumpleaños</h2>
+    <p>¿Quieres saber cuándo es mi cumpleaños?</p>
+    <button class="birthday-button" onclick="mostrarCumple()">Mostrar fecha</button>
+  </section>
+
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <p>(Esperando).</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Puedes escribirme directamente para colaboraciones o ideas de proyectos.</p>
+    <div class="social-icons">
+      <a href="https://discord.gg/TU_DISCORD" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://tiktok.com/@TU_USUARIO" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Música tranquila de fondo en loop con controles funcionales -->
+<audio id="backgroundMusic" src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_d43acbfcf4.mp3?filename=slow-dream-110244.mp3" loop></audio>
+
+<!-- Controles de audio -->
+<div id="audioControls" aria-label="Controles de música">
+  <button id="playPauseBtn" aria-label="Reproducir/Pausar música">►</button>
+  <input
+    type="range"
+    id="progressBar"
+    value="0"
+    min="0"
+    max="100"
+    step="0.1"
+    aria-label="Barra de progreso de la música"
+  />
+  <input
+    type="range"
+    id="volumeControl"
+    min="0"
+    max="1"
+    step="0.01"
+    aria-label="Control de volumen"
+  />
+</div>
+
+<script>
+  // Menu toggle responsive
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('open');
+  }
+
+  // Intersection Observer para animar secciones al entrar en viewport
+  const sections = document.querySelectorAll('main section');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Función para mostrar cumpleaños con confeti y sonido corto
+  function mostrarCumple() {
+    alert('Mi cumpleaños es el 05 de julio 🎉');
+
+    // Confeti múltiple
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { y: Math.random() * 0.6 },
+          colors: ['#e74c3c', '#000000'],
+        });
+      }, i * 400);
+    }
+
+    // Sonido corto de cumpleaños
+    const cumpleAudio = new Audio(
+      'https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg'
+    );
+    cumpleAudio.volume = 0.5;
+    cumpleAudio.play();
+
+    setTimeout(() => {
+      cumpleAudio.pause();
+      cumpleAudio.currentTime = 0;
+    }, 5000);
+  }
+
+  // CONTROL DE AUDIO FUNCIONAL
+  const bgMusic = document.getElementById('backgroundMusic');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const progressBar = document.getElementById('progressBar');
+  const volumeControl = document.getElementById('volumeControl');
+
+  // Inicializar volumen y progreso al cargar la página
+  window.addEventListener('load', () => {
+    volumeControl.value = bgMusic.volume;
+    progressBar.value = 0;
+
+    // Intenta reproducir automáticamente (puede bloquearse en móviles)
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Si autoplay bloqueado, espera a que el usuario toque para reproducir
+        document.body.addEventListener(
+          'click',
+          () => {
+            bgMusic.play();
+            playPauseBtn.textContent = '❚❚';
+          },
+          { once: true }
+        );
+      });
+    }
+  });
+
+  // Toggle play/pause
+  playPauseBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      playPauseBtn.textContent = '❚❚'; // icono pausa
+    } else {
+      bgMusic.pause();
+      playPauseBtn.textContent = '►'; // icono play
+    }
+  });
+
+  // Actualizar barra de progreso conforme avanza el audio
+  bgMusic.addEventListener('timeupdate', () => {
+    if (bgMusic.duration) {
+      const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
+      progressBar.value = progressPercent;
+    }
+  });
+
+  // Saltar a una posición del audio al mover la barra
+  progressBar.addEventListener('input', () => {
+    if (bgMusic.duration) {
+      const seekTime = (progressBar.value / 100) * bgMusic.duration;
+      bgMusic.currentTime = seekTime;
+    }
+  });
+
+  // Controlar volumen
+  volumeControl.addEventListener('input', () => {
+    bgMusic.volume = volumeControl.value;
+  });
+
+  // Cuando termina el audio (si no está en loop), cambiar icono
+  bgMusic.addEventListener('ended', () => {
+    playPauseBtn.textContent = '►';
+  });
+</script>
+
+</body>
+</html>
 
