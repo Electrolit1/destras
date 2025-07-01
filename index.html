@@ -183,91 +183,6 @@
       user-select: none;
     }
 
-    /* Estilos para el control de audio */
-    #audioControls {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1a1a1a;
-      padding: 10px 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: #e74c3c;
-      font-weight: bold;
-      user-select: none;
-      z-index: 1100;
-      max-width: 400px;
-      width: 90%;
-      box-sizing: border-box;
-    }
-
-    #playPauseBtn {
-      background: #e74c3c;
-      border: none;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background 0.3s;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #playPauseBtn:hover {
-      background: #c0392b;
-    }
-
-    #progressBar {
-      flex: 1;
-      -webkit-appearance: none;
-      width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      background: #555;
-      cursor: pointer;
-    }
-    #progressBar::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #e74c3c;
-      cursor: pointer;
-      border: none;
-      margin-top: -4px;
-      transition: background 0.3s;
-    }
-    #progressBar::-webkit-slider-thumb:hover {
-      background: #c0392b;
-    }
-    #progressBar::-moz-range-thumb {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #e74c3c;
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s;
-    }
-    #progressBar::-moz-range-thumb:hover {
-      background: #c0392b;
-    }
-
-    #volumeControl {
-      width: 100px;
-      cursor: pointer;
-    }
-    #volumeControl::-webkit-slider-thumb {
-      background: #e74c3c !important;
-    }
-
     /* Responsive para móviles */
     @media (max-width: 480px) {
       main {
@@ -293,37 +208,6 @@
       }
       .menu-btn {
         display: block;
-      }
-
-      #audioControls {
-        flex-direction: column;
-        gap: 10px;
-        padding: 12px 16px;
-        max-width: 320px;
-        width: 95%;
-      }
-
-      #playPauseBtn {
-        padding: 14px 18px;
-        font-size: 1.6rem;
-      }
-
-      #progressBar {
-        width: 100%;
-        height: 8px;
-      }
-      #progressBar::-webkit-slider-thumb {
-        width: 20px;
-        height: 20px;
-        margin-top: -6px;
-      }
-      #progressBar::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-      }
-
-      #volumeControl {
-        width: 100%;
       }
     }
 
@@ -414,30 +298,8 @@
   <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
 </footer>
 
-<!-- Música tranquila de fondo en loop con controles funcionales -->
-<audio id="backgroundMusic" src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_d43acbfcf4.mp3?filename=slow-dream-110244.mp3" loop></audio>
-
-<!-- Controles de audio -->
-<div id="audioControls" aria-label="Controles de música">
-  <button id="playPauseBtn" aria-label="Reproducir/Pausar música">►</button>
-  <input
-    type="range"
-    id="progressBar"
-    value="0"
-    min="0"
-    max="100"
-    step="0.1"
-    aria-label="Barra de progreso de la música"
-  />
-  <input
-    type="range"
-    id="volumeControl"
-    min="0"
-    max="1"
-    step="0.01"
-    aria-label="Control de volumen"
-  />
-</div>
+<!-- Música tranquila de fondo que se reproduce automáticamente y en loop -->
+<audio id="backgroundMusic" src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_d43acbfcf4.mp3?filename=slow-dream-110244.mp3" loop autoplay></audio>
 
 <!-- Overlay mantenimiento -->
 <div id="maintenanceOverlay">
@@ -499,73 +361,8 @@
     }, 5000);
   }
 
-  // CONTROL DE AUDIO FUNCIONAL
-  const bgMusic = document.getElementById('backgroundMusic');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const progressBar = document.getElementById('progressBar');
-  const volumeControl = document.getElementById('volumeControl');
-
-  // Inicializar volumen y progreso al cargar la página
-  window.addEventListener('load', () => {
-    volumeControl.value = bgMusic.volume;
-    progressBar.value = 0;
-
-    // Intenta reproducir automáticamente (puede bloquearse en móviles)
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Si autoplay bloqueado, espera a que el usuario toque para reproducir
-        document.body.addEventListener(
-          'click',
-          () => {
-            bgMusic.play();
-            playPauseBtn.textContent = '❚❚';
-          },
-          { once: true }
-        );
-      });
-    }
-  });
-
-  // Toggle play/pause
-  playPauseBtn.addEventListener('click', () => {
-    if (bgMusic.paused) {
-      bgMusic.play();
-      playPauseBtn.textContent = '❚❚'; // icono pausa
-    } else {
-      bgMusic.pause();
-      playPauseBtn.textContent = '►'; // icono play
-    }
-  });
-
-  // Actualizar barra de progreso conforme avanza el audio
-  bgMusic.addEventListener('timeupdate', () => {
-    if (bgMusic.duration) {
-      const progressPercent = (bgMusic.currentTime / bgMusic.duration) * 100;
-      progressBar.value = progressPercent;
-    }
-  });
-
-  // Saltar a una posición del audio al mover la barra
-  progressBar.addEventListener('input', () => {
-    if (bgMusic.duration) {
-      const seekTime = (progressBar.value / 100) * bgMusic.duration;
-      bgMusic.currentTime = seekTime;
-    }
-  });
-
-  // Controlar volumen
-  volumeControl.addEventListener('input', () => {
-    bgMusic.volume = volumeControl.value;
-  });
-
-  // Cuando termina el audio (si no está en loop), cambiar icono
-  bgMusic.addEventListener('ended', () => {
-    playPauseBtn.textContent = '►';
-  });
-
   // SISTEMA DE MANTENIMIENTO
-  const mantenimientoActivo = true; // Cambia a true para activar mantenimiento
+  const mantenimientoActivo = false; // Cambia a true para activar mantenimiento
 
   function toggleMantenimiento(activo) {
     const overlay = document.getElementById('maintenanceOverlay');
