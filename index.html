@@ -3,48 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Web Sencilla</title>
+  <title>Mi Web Chévere</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      backdrop-filter: brightness(0.6);
     }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      max-width: 700px;
+      width: 100%;
+    }
+
     h1 {
-      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
+
     p {
-      color: #555;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
       background-color: #3498db;
-      color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
+      transition: background 0.3s ease;
     }
+
     button:hover {
       background-color: #2980b9;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>¡Bienvenido a PorHUB!</h1>
-  <p>Esta es una web porno en la que debes pagar para ver contenido delicioso.</p>
-  <button onclick="mostrarAlerta()">Haz clic aquí</button>
+  <div class="container">
+    <h1>¡Bienvenido a mi sitio!</h1>
+    <img src="https://images.unsplash.com/photo-1606788075761-9be3aef1b4c6?auto=format&fit=crop&w=1000&q=80" alt="Imagen destacada">
+    <p>Este es un sitio web de prueba decorado con estilo moderno, listo para compartir con el mundo.</p>
+    <button onclick="mostrarAlerta()">Explorar</button>
+  </div>
 
   <script>
     function mostrarAlerta() {
-      alert("¡Gracias por visitar mi web!");
+      alert("¡Gracias por visitar! 🧠🔥");
     }
   </script>
 </body>
