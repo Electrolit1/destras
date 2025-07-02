@@ -272,6 +272,47 @@
       color: #fff !important;
     }
 
+    /* Nueva sección para contacto con descripción y logos alineados */
+    #contacto .contact-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    #contacto .contact-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      border: 2px solid #D32F2F;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      width: 140px;
+      user-select: none;
+    }
+    #contacto .contact-link i {
+      font-size: 2.8rem;
+      color: #D32F2F;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+    #contacto .contact-link:hover {
+      background-color: #D32F2F;
+      color: #fff;
+      box-shadow: 0 0 12px #D32F2F;
+      transform: scale(1.05);
+    }
+    #contacto .contact-desc {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
+    }
+
     .footer {
       margin-top: 60px;
       font-size: 0.95rem;
@@ -355,6 +396,13 @@
         margin: 0 auto 30px auto;
         width: 180px;
         display: block;
+      }
+      #contacto .contact-links {
+        flex-direction: column;
+        gap: 20px;
+      }
+      #contacto .contact-link {
+        width: 100%;
       }
     }
   </style>
@@ -450,26 +498,39 @@
     </div>
 
     <div id="contacto" class="view">
-      <div class="desc" id="desc-contacto">
-        ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes
-        contactarme directamente:
-        <br /><br />
+      <div class="desc-contact-desc" id="desc-contacto-text">
+        ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes contactarme directamente a través de mis redes:
+      </div>
+      <div class="contact-links">
         <a
           href="https://discord.gg/R65AbhnJWY"
           target="_blank"
-          class="btn"
+          class="contact-link"
           id="contact-discord"
-          ><i class="fab fa-discord"></i> Discord</a
+          aria-label="Discord"
         >
+          <i class="fab fa-discord"></i>
+          Discord
+          <small style="font-weight: 400; margin-top: 5px; font-size: 0.85rem; color: #eee;">
+            Únete a mi comunidad y chatea conmigo
+          </small>
+        </a>
+
         <a
           href="https://tiktok.com/@destrascol"
           target="_blank"
-          class="btn"
+          class="contact-link"
           id="contact-tiktok"
-          ><i class="fab fa-tiktok"></i> TikTok</a
+          aria-label="TikTok"
         >
+          <i class="fab fa-tiktok"></i>
+          TikTok
+          <small style="font-weight: 400; margin-top: 5px; font-size: 0.85rem; color: #eee;">
+            Sígueme para contenido de tecnología y más
+          </small>
+        </a>
       </div>
-      <div class="buttons">
+      <div class="buttons" style="margin-top: 30px;">
         <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-3">
           <i class="fas fa-arrow-left"></i> Volver al inicio
         </a>
@@ -574,9 +635,10 @@
       document.getElementById("proj2-desc").textContent = t.proj2Desc;
       document.getElementById("proj2-link").textContent = t.proj2Link;
 
-      document.getElementById("desc-contacto").innerHTML = t.descContacto;
-      document.getElementById("contact-discord").textContent = t.contactDiscord;
-      document.getElementById("contact-tiktok").textContent = t.contactTikTok;
+      document.getElementById("desc-contacto-text").textContent = t.descContacto;
+      // Los botones de contacto tienen íconos + texto, para mantenerlos, los actualizamos aquí
+      document.getElementById("contact-discord").childNodes[2].nodeValue = " " + t.contactDiscord;
+      document.getElementById("contact-tiktok").childNodes[2].nodeValue = " " + t.contactTikTok;
 
       document.getElementById("footer-text").textContent = t.footerText;
 
