@@ -16,9 +16,11 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #0e0e0e;
+      background: linear-gradient(135deg, #0e0e0e, #1e1e2f);
       color: #e0e0e0;
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
     header {
@@ -30,6 +32,9 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      position: fixed;
+      top: 0;
+      z-index: 999;
     }
 
     .logo {
@@ -42,19 +47,28 @@
       margin-left: 20px;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #e74c3c;
     }
 
     .view {
       display: none;
-      padding: 80px 20px 40px;
-      max-width: 900px;
+      padding: 100px 20px 60px;
+      max-width: 1000px;
       margin: auto;
+      animation: fadeIn 0.5s ease;
     }
+
     .view.active {
       display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1, h2 {
@@ -62,15 +76,75 @@
       margin-bottom: 15px;
     }
 
+    p {
+      line-height: 1.6;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #e74c3c;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .card a:hover {
+      background: #c0392b;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
     .social-icons a {
       color: white;
       font-size: 2rem;
       margin: 0 15px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, color 0.3s;
     }
+
     .social-icons a:hover {
       transform: scale(1.2);
       color: #e74c3c;
+    }
+
+    .flag-colombia {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: auto;
+      opacity: 0.8;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .flag-colombia:hover {
+      transform: scale(1.1);
     }
 
     footer {
@@ -81,6 +155,18 @@
       position: fixed;
       width: 100%;
       bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 600px) {
+      nav a {
+        margin-left: 10px;
+        font-size: 0.9rem;
+      }
+
+      .flag-colombia {
+        width: 45px;
+      }
     }
   </style>
 </head>
@@ -98,36 +184,41 @@
 
 <div id="inicio" class="view active">
   <h1>Bienvenido a mi portafolio</h1>
-  <p>Soy Destras, desarrollador de servidores Minecraft y bots para Discord.</p>
+  <p>Soy <strong>Destras</strong>, apasionado por la tecnología, desarrollo de servidores Minecraft y bots para Discord. Aquí conocerás más sobre mis proyectos y habilidades.</p>
 </div>
 
 <div id="sobre" class="view">
   <h2>Sobre mí</h2>
-  <p>Me encanta configurar servidores de Minecraft y bots para Discord. Aprendo cada día para mejorar y crear proyectos de calidad.</p>
+  <div class="card">
+    <p>Soy una persona comprometida y autodidacta. Me encanta aprender constantemente y trabajar en proyectos que me reten y me permitan crecer profesionalmente. He trabajado en servidores de Minecraft y automatización de comunidades usando bots de Discord.</p>
+  </div>
 </div>
 
 <div id="proyectos" class="view">
-  <h2>Proyectos</h2>
-  <div>
+  <h2>Proyectos destacados</h2>
+  <div class="card">
     <h3 style="color: #e74c3c;">FearMC Network</h3>
-    <p>Servidor de Minecraft con sistemas personalizados, eventos exclusivos y comunidad activa.</p>
-    <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC" width="100">
-    <br>
-    <a href="https://discord.fearmc.xyz" target="_blank" style="color:#e74c3c; font-weight:bold;">Unirse al Discord</a>
+    <p>Servidor profesional de Minecraft con sistemas propios, eventos únicos y una comunidad activa.</p>
+    <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC">
+    <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord</a>
   </div>
 </div>
 
 <div id="contacto" class="view">
   <h2>Contacto</h2>
-  <p>¿Quieres trabajar conmigo? Escríbeme:</p>
-  <div class="social-icons">
-    <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
-    <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <div class="card">
+    <p>¿Quieres trabajar conmigo o proponer una colaboración? Puedes escribirme directamente:</p>
+    <div class="social-icons">
+      <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
   </div>
 </div>
 
+<img class="flag-colombia" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia">
+
 <footer>
-  &copy; 2025 Destras - Todos los derechos reservados
+  &copy; 2025 Destras — Todos los derechos reservados.
 </footer>
 
 <script>
