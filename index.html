@@ -13,7 +13,7 @@
       margin: 0;
       font-family: "Segoe UI", sans-serif;
       background-color: #0e0e0e;
-      color: #e0e0e0;
+      color: transparent; /* quitamos color directo */
       overflow-x: hidden;
       animation: bgPulse 10s ease-in-out infinite alternate;
       display: flex;
@@ -50,28 +50,29 @@
       position: relative;
     }
 
+    /* Moví el selector debajo del header, centrado */
     .language-select {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #2a2a2a;
+      margin: 20px 0 40px 0;
+      background: transparent;
       border-radius: 12px;
       padding: 8px 15px;
-      box-shadow:
-        0 0 10px rgba(255, 214, 0, 0.7);
-      user-select: none;
-      color: #ddd;
+      border: 2px solid #FFD600;
+      color: transparent; /* texto invisible */
       font-weight: 700;
       font-size: 0.9rem;
       cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.3s ease;
+      -webkit-text-stroke: 1px #FFD600;
+      transition: all 0.3s ease;
       outline: none;
+      user-select: none;
+      width: 180px;
+      text-align: center;
     }
     .language-select:hover,
     .language-select:focus {
-      border-color: #FFD600;
-      color: #fff;
+      color: #FFD600; /* aparece color relleno en hover */
+      -webkit-text-stroke: 0;
+      border-color: #fff;
     }
 
     .card-header {
@@ -79,25 +80,29 @@
       justify-content: space-between;
       align-items: flex-start;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .name {
       font-size: 2.6rem;
       font-weight: 900;
-      background: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #FFD600;
       letter-spacing: 1.5px;
       user-select: none;
       text-shadow: 0 0 6px rgba(255, 214, 0, 0.7);
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: transparent !important;
     }
 
     .role {
       font-size: 1.25rem;
       margin-top: 8px;
-      color: #ccc;
+      color: transparent;
+      -webkit-text-stroke: 0.8px #ccc;
       font-style: italic;
+      user-select: none;
     }
 
     .bandera {
@@ -118,7 +123,8 @@
       margin-top: 15px;
       font-size: 1.1rem;
       line-height: 1.7;
-      color: #ddd;
+      color: transparent;
+      -webkit-text-stroke: 0.7px #ddd;
       letter-spacing: 0.4px;
       user-select: text;
       text-align: center;
@@ -136,12 +142,13 @@
     .btn {
       flex: 1;
       min-width: 150px;
-      background-color: transparent;
+      background-color: transparent !important;
       border: 2px solid;
       border-image-slice: 1;
       border-width: 2px;
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: #ccc;
+      color: transparent;
+      -webkit-text-stroke: 0.9px #ccc;
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: 700;
@@ -160,6 +167,9 @@
 
     .btn i {
       font-size: 1.1rem;
+      color: #FFD600; /* para los íconos dejar color amarillo */
+      -webkit-text-stroke: 0;
+      user-select: none;
     }
 
     .btn:hover {
@@ -168,7 +178,8 @@
         0 0 10px #FFD600,
         0 0 10px #D32F2F,
         0 0 10px #1976D2;
-      color: #fff;
+      color: #fff !important;
+      -webkit-text-stroke: 0;
       transform: scale(1.05);
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
     }
@@ -208,10 +219,12 @@
 
     .project-logo {
       font-size: 3rem;
-      color: #FFD600;
+      color: transparent;
+      -webkit-text-stroke: 1.8px #FFD600;
       flex-shrink: 0;
       user-select: none;
       filter: drop-shadow(0 0 4px #FFD600);
+      background: none !important;
     }
 
     .project-content {
@@ -225,20 +238,20 @@
       font-size: 1.8rem;
       font-weight: 800;
       color: transparent;
-      background: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.2px #FFD600;
       user-select: none;
       margin: 0;
       text-shadow:
-        0 0 5px rgba(255,214,0,0.6),
-        0 0 5px rgba(211,47,47,0.6),
-        0 0 5px rgba(25,118,210,0.6);
+        0 0 5px rgba(255,214,0,0.6);
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: transparent !important;
     }
 
     .project-desc {
       font-size: 1.05rem;
-      color: #ccc;
+      color: transparent;
+      -webkit-text-stroke: 0.7px #ccc;
       line-height: 1.5;
       user-select: text;
       margin: 0;
@@ -247,12 +260,13 @@
     .project-link {
       align-self: flex-start;
       margin-top: 8px;
-      background-color: #1f1f1f;
+      background-color: transparent !important;
       border: 2px solid;
       border-image-slice: 1;
       border-width: 2px;
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: #fff;
+      color: transparent;
+      -webkit-text-stroke: 0.9px #fff;
       padding: 10px 20px;
       border-radius: 10px;
       font-weight: 700;
@@ -265,20 +279,27 @@
       gap: 8px;
     }
 
+    .project-link i {
+      color: #FFD600; /* ícono visible */
+      -webkit-text-stroke: 0;
+    }
+
     .project-link:hover {
-      background: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
+      background: transparent;
       box-shadow:
         0 0 15px #FFD600,
         0 0 15px #D32F2F,
         0 0 15px #1976D2;
       transform: scale(1.05);
-      color: #fff;
+      color: #fff !important;
+      -webkit-text-stroke: 0;
     }
 
     .footer {
       margin-top: 60px;
       font-size: 0.95rem;
-      color: #bbb;
+      color: transparent;
+      -webkit-text-stroke: 0.6px #bbb;
       text-align: center;
       width: 90%;
       max-width: 800px;
@@ -355,9 +376,9 @@
       }
       .language-select {
         position: static;
-        margin-bottom: 20px;
-        width: 100%;
-        max-width: 200px;
+        margin: 0 auto 30px auto;
+        width: 180px;
+        display: block;
       }
     }
   </style>
@@ -365,12 +386,7 @@
 <body>
 
   <div class="container">
-    <!-- Selector de idioma -->
-    <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
-      <option value="es" selected>Español 🇨🇴</option>
-      <option value="en">English 🇺🇸</option>
-    </select>
-
+    <!-- Selector de idioma debajo del header -->
     <div class="card-header">
       <div>
         <div class="name" id="name-title">Destras</div>
@@ -383,6 +399,11 @@
         id="flag-image"
       />
     </div>
+
+    <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
+      <option value="es" selected>Español 🇨🇴</option>
+      <option value="en">English 🇺🇸</option>
+    </select>
 
     <div id="inicio" class="view active">
       <div class="desc" id="desc-inicio">
@@ -419,7 +440,6 @@
     </div>
 
     <div id="proyectos" class="view">
-      <!-- Aquí puedes agregar tantos proyectos como quieras -->
       <div class="project-banner">
         <div class="project-logo"><i class="fas fa-server"></i></div>
         <div class="project-content">
