@@ -1,272 +1,159 @@
-<!-- Solo reemplaza todo tu HTML con este -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Destras | Portafolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: #0e0e0e;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
       color: #e0e0e0;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    header {
-      background: #1e1e2f;
-      color: white;
-      width: 100%;
-      padding: 15px 30px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
-      position: fixed;
-      top: 0;
-      z-index: 999;
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #e74c3c;
-    }
-
-    .view {
-      display: none;
-      padding: 120px 20px 60px;
-      max-width: 1100px;
-      margin: auto;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .view.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h1, h2 {
-      color: #e74c3c;
-      margin-bottom: 15px;
-    }
-
-    p {
-      line-height: 1.6;
-    }
-
-    .inicio-contenido {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
-
-    .inicio-texto {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .inicio-imagen {
-      flex: 1;
-      min-width: 280px;
-      max-width: 500px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-    }
-
-    .inicio-imagen img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-    }
-
-    .inicio-imagen:hover {
-      transform: scale(1.02);
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .card {
-      background: #1a1a1a;
-      padding: 25px;
-      border-radius: 12px;
-      margin-top: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      animation: fadeIn 0.8s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
-    .card img {
-      width: 100px;
-      border-radius: 10px;
-      margin-top: 10px;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
     }
 
-    .card a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #e74c3c;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
+    .name {
+      font-size: 2.5rem;
       font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .card a:hover {
-      background: #c0392b;
-    }
-
-    .social-icons {
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      color: white;
-      font-size: 2rem;
-      margin: 0 15px;
-      transition: transform 0.3s, color 0.3s;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
       color: #e74c3c;
+    }
+
+    .role {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      color: #cccccc;
+    }
+
+    .desc {
+      margin-top: 15px;
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e74c3c;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 150px;
+      background-color: #1f1f1f;
+      border: 2px solid #e74c3c;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #e74c3c;
+      color: #fff;
     }
 
     .flag-colombia {
       position: fixed;
       top: 20px;
       left: 20px;
-      width: 65px;
-      height: auto;
-      opacity: 0.95;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-      z-index: 998;
-    }
-
-    .flag-colombia:hover {
-      transform: scale(1.1);
-    }
-
-    .footer-corner {
-      position: fixed;
-      bottom: 15px;
-      left: 15px;
-      background: rgba(30, 30, 47, 0.8);
-      padding: 6px 14px;
+      width: 60px;
       border-radius: 8px;
-      font-size: 0.8rem;
-      color: #aaa;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 10;
     }
 
-    @media(max-width: 700px) {
-      .inicio-contenido {
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    @media(max-width: 600px) {
+      .card-header {
         flex-direction: column;
+        align-items: flex-start;
       }
 
-      .flag-colombia {
-        width: 50px;
+      .avatar {
+        align-self: flex-end;
+        margin-top: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Destras</div>
-  <nav>
-    <a href="#" onclick="mostrarVista('inicio')">Inicio</a>
-    <a href="#" onclick="mostrarVista('sobre')">Sobre mí</a>
-    <a href="#" onclick="mostrarVista('proyectos')">Proyectos</a>
-    <a href="#" onclick="mostrarVista('contacto')">Contacto</a>
-  </nav>
-</header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" class="flag-colombia">
 
-<div id="inicio" class="view active">
-  <div class="inicio-contenido">
-    <div class="inicio-texto">
-      <h1>¡Hola! Soy Destras</h1>
-      <p>Soy un apasionado por la tecnología y el desarrollo digital. Me dedico a configurar servidores de Minecraft con sistemas avanzados, crear bots de Discord para automatizar comunidades y explorar constantemente nuevas herramientas. En este portafolio encontrarás mis proyectos, experiencias y habilidades.</p>
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Destras</div>
+        <div class="role">Manager & Developer de Minecraft</div>
+      </div>
+      <img src="https://cdn.discordapp.com/avatars/1193277609871898705/a_69e69e81db69ac6c82b22d869650720d.gif?size=2048" alt="Avatar" class="avatar">
     </div>
-    <div class="inicio-imagen">
-      <img src="https://i.imgur.com/Tv9eJal.jpeg" alt="Medellín, Colombia">
+    <div class="desc">
+      Desarrollador de servidores Minecraft y bots para Discord con más de 3 años de experiencia. Me especializo en crear sistemas personalizados que mejoran la experiencia de juego y administración de comunidades.
     </div>
-  </div>
-</div>
-
-<div id="sobre" class="view">
-  <h2>Sobre mí</h2>
-  <div class="card">
-    <p>Soy una persona comprometida, creativa y autodidacta. Me encanta aprender nuevas herramientas para mejorar mis proyectos. Mi enfoque está en crear soluciones eficientes para servidores y comunidades online.</p>
-  </div>
-</div>
-
-<div id="proyectos" class="view">
-  <h2>Proyectos destacados</h2>
-  <div class="card">
-    <h3 style="color: #e74c3c;">FearMC Network</h3>
-    <p>Servidor profesional de Minecraft con sistemas personalizados, eventos únicos y una comunidad muy activa.</p>
-    <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC">
-    <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord</a>
-  </div>
-</div>
-
-<div id="contacto" class="view">
-  <h2>Contacto</h2>
-  <div class="card">
-    <p>¿Quieres trabajar conmigo o proponer un proyecto? ¡Escríbeme directamente a través de mis redes!</p>
-    <div class="social-icons">
-      <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <div class="buttons">
+      <a href="#" class="btn"><i class="fas fa-code"></i> Servicios</a>
+      <a href="#" class="btn"><i class="fas fa-server"></i> Servidores</a>
+      <a href="https://discord.gg/R65AbhnJWY" target="_blank" class="btn"><i class="fab fa-discord"></i> Discord</a>
     </div>
   </div>
-</div>
 
-<img class="flag-colombia" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia">
-
-<div class="footer-corner">
-  &copy; 2025 Destras — Todos los derechos reservados
-</div>
-
-<script>
-  function mostrarVista(id) {
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
+  <div class="footer">
+    &copy; 2025 Destras — Todos los derechos reservados.
+  </div>
 
 </body>
 </html>
