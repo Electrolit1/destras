@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destras * InformaciÓn</title>
+  <title>Destras | Portafolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
@@ -20,6 +20,56 @@
       background: #0e0e0e;
       color: #e0e0e0;
       min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Intro */
+    #introContainer {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0e0e0e;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .intro-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #e74c3c;
+      text-align: center;
+    }
+
+    .intro-content p {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .intro-buttons button {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      margin: 5px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .intro-buttons button:hover {
+      background: #c0392b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     header {
@@ -159,22 +209,6 @@
       color: #e74c3c;
     }
 
-    .birthday-button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      background: #e74c3c;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .birthday-button:hover {
-      background: #c0392b;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
@@ -182,202 +216,108 @@
       color: white;
       user-select: none;
     }
-
-    /* Responsive para móviles */
-    @media (max-width: 480px) {
-      main {
-        padding: 90px 15px 50px 15px;
-      }
-      .nav-links {
-        position: fixed;
-        top: 60px;
-        right: 0;
-        background: #1a1a1a;
-        flex-direction: column;
-        width: 200px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        border-radius: 0 0 0 10px;
-        box-shadow: -4px 0 10px rgba(0,0,0,0.3);
-        padding-top: 20px;
-        gap: 10px;
-        z-index: 1050;
-      }
-      .nav-links.open {
-        transform: translateX(0);
-      }
-      .menu-btn {
-        display: block;
-      }
-    }
-
-    /* Modo mantenimiento overlay */
-    #maintenanceOverlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(14,14,14,0.95);
-      color: #e74c3c;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      z-index: 2000;
-      user-select: none;
-      flex-direction: column;
-      gap: 10px;
-    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Esta es mi informacion</div>
-  <button class="menu-btn" aria-label="Menú" onclick="toggleMenu()">☰</button>
-  <nav>
-    <div class="nav-links" id="navLinks">
-      <a href="#inicio">Inicio</a>
-      <a href="#sobre">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#cumple">Cumpleaños</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#contacto">Contacto</a>
+<!-- INTRO -->
+<div id="introContainer">
+  <div class="intro-content">
+    <h1>¡Bienvenido a mi portafolio!</h1>
+    <p>Soy <strong>Destras</strong>, desarrollador de servidores Minecraft y bots de Discord.</p>
+    <div class="intro-buttons">
+      <button onclick="irA('sobre')">Sobre mí</button>
+      <button onclick="irA('proyectos')">Proyectos</button>
+      <button onclick="irA('contacto')">Contacto</button>
     </div>
-  </nav>
-</header>
+  </div>
+</div>
 
-<main>
-  <section id="inicio">
-    <h2>¡Hola! Soy Destras</h2>
-    <p>Bienvenido a mi portafolio donde comparto mis proyectos y habilidades.</p>
-  </section>
+<!-- CONTENIDO PRINCIPAL -->
+<div id="mainContent" style="display:none">
+  <header>
+    <div class="logo">Destras | Portafolio</div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
 
-  <section id="sobre">
-    <h2>Sobre mí</h2>
-    <p>Me encanta configurar servidores de minecraft y bots para discord, me gusta aprender dia a dia de muchas cosas nuevas las cuales me sirven para ir mejorandome y superandome todos los dias.</p>
-  </section>
+  <main>
+    <section id="inicio">
+      <h2>¡Hola! Soy Destras</h2>
+      <p>Bienvenido a mi portafolio donde comparto mis proyectos y habilidades.</p>
+    </section>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <p>Actualmente trabajando y creando un servidor (fearmc.xyz)</p>
-    <div class="project-card">
-      <h3 style="color: #e74c3c;">FearMC Network</h3>
-      <p>FearMC es un servidor de Minecraft diseñado para ofrecer una experiencia única, con sistemas personalizados, eventos exclusivos y comunidad activa.</p>
-      <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC" />
-      <br />
-      <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord de FearMC</a>
-    </div>
-  </section>
+    <section id="sobre">
+      <h2>Sobre mí</h2>
+      <p>Me encanta configurar servidores de Minecraft y bots para Discord. Aprendo cada día para superarme y crear proyectos de calidad.</p>
+    </section>
 
-  <section id="cumple">
-    <h2>Mi Cumpleaños</h2>
-    <p>¿Quieres saber cuándo es mi cumpleaños?</p>
-    <button class="birthday-button" onclick="mostrarCumple()">Mostrar fecha</button>
-  </section>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <div class="project-card">
+        <h3 style="color: #e74c3c;">FearMC Network</h3>
+        <p>FearMC es un servidor de Minecraft con sistemas personalizados, eventos exclusivos y comunidad activa.</p>
+        <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC">
+        <br>
+        <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord de FearMC</a>
+      </div>
+    </section>
 
-  <section id="habilidades">
-    <h2>Habilidades</h2>
-    <p>Pronto agregare mis habilidades.</p>
-  </section>
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>¿Quieres trabajar conmigo o tienes una idea para un proyecto? Escríbeme:</p>
+      <div class="social-icons">
+        <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
+        <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
+  </main>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Puedes escribirme directamente para colaboraciones o ideas de proyectos.</p>
-    <div class="social-icons">
-      <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
-</footer>
-
-<!-- Música tranquila de fondo que se reproduce automáticamente y en loop -->
-<audio id="backgroundMusic" src="https://cdn.pixabay.com/download/audio/2022/03/23/audio_d43acbfcf4.mp3?filename=slow-dream-110244.mp3" loop autoplay></audio>
-
-<!-- Overlay mantenimiento -->
-<div id="maintenanceOverlay">
-  <p>🚧 Sitio en mantenimiento 🚧</p>
-  <p>Volvemos en un momento, gracias por la paciencia.</p>
+  <footer>
+    <p>&copy; 2025 - Destras. Todos los derechos reservados.</p>
+  </footer>
 </div>
 
 <script>
-  // Menu toggle responsive
   function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('open');
   }
 
-  // Intersection Observer para animar secciones al entrar en viewport
   const sections = document.querySelectorAll('main section');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach((section) => observer.observe(section));
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-
-  // Función para mostrar cumpleaños con confeti y sonido corto
-  function mostrarCumple() {
-    alert('Mi cumpleaños es el 05 de julio 🎉');
-
-    // Confeti múltiple
-    for (let i = 0; i < 5; i++) {
-      setTimeout(() => {
-        confetti({
-          particleCount: 150,
-          spread: 100,
-          origin: { y: Math.random() * 0.6 },
-          colors: ['#e74c3c', '#000000'],
-        });
-      }, i * 400);
-    }
-
-    // Sonido corto de cumpleaños
-    const cumpleAudio = new Audio(
-      'https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg'
-    );
-    cumpleAudio.volume = 0.5;
-    cumpleAudio.play();
-
+  function irA(id) {
+    document.getElementById("introContainer").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+    document.body.style.overflow = "auto";
     setTimeout(() => {
-      cumpleAudio.pause();
-      cumpleAudio.currentTime = 0;
-    }, 5000);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
   }
 
-  // SISTEMA DE MANTENIMIENTO
-  const mantenimientoActivo = false; // Cambia a true para activar mantenimiento
-
-  function toggleMantenimiento(activo) {
-    const overlay = document.getElementById('maintenanceOverlay');
-    if (activo) {
-      overlay.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // bloquea scroll
-    } else {
-      overlay.style.display = 'none';
-      document.body.style.overflow = ''; // permite scroll
-    }
-  }
-
-  // Activar o desactivar mantenimiento según la variable
-  toggleMantenimiento(mantenimientoActivo);
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("introContainer").style.display = "none";
+      document.getElementById("mainContent").style.display = "block";
+      document.body.style.overflow = "auto";
+    }, 4000);
+  });
 </script>
-
 </body>
 </html>
