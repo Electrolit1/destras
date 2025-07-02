@@ -112,13 +112,13 @@
     .btn {
       flex: 1;
       min-width: 150px;
-      background-color: #222222;
+      background-color: transparent; /* transparente para no resaltar */
       border: 2px solid;
       border-image-slice: 1;
       border-width: 2px;
-      /* border gradient amarillo-rojo-azul */
+      /* borde con gradiente amarillo-rojo-azul */
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: #fff;
+      color: #ccc; /* letras neutras, sin color fuerte */
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: 700;
@@ -127,7 +127,7 @@
       transition: all 0.3s ease;
       text-align: center;
       text-decoration: none;
-      box-shadow: 0 0 12px transparent;
+      box-shadow: none;
       user-select: none;
       display: flex;
       align-items: center;
@@ -140,13 +140,14 @@
     }
 
     .btn:hover {
-      background: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
+      background: transparent; /* sin fondo sólido */
       box-shadow:
-        0 0 15px #FFD600,
-        0 0 15px #D32F2F,
-        0 0 15px #1976D2;
-      color: #fff;
+        0 0 10px #FFD600,
+        0 0 10px #D32F2F,
+        0 0 10px #1976D2;
+      color: #fff; /* texto blanco al pasar el mouse */
       transform: scale(1.05);
+      border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
     }
 
     .view {
