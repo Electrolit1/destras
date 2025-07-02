@@ -1,3 +1,4 @@
+<!-- Solo reemplaza todo tu HTML con este -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -55,8 +55,8 @@
 
     .view {
       display: none;
-      padding: 100px 20px 60px;
-      max-width: 1000px;
+      padding: 120px 20px 60px;
+      max-width: 1100px;
       margin: auto;
       animation: fadeIn 0.5s ease;
     }
@@ -77,6 +77,39 @@
 
     p {
       line-height: 1.6;
+    }
+
+    .inicio-contenido {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inicio-texto {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .inicio-imagen {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+
+    .inicio-imagen img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .inicio-imagen:hover {
+      transform: scale(1.02);
     }
 
     .card {
@@ -132,12 +165,12 @@
 
     .flag-colombia {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 70px;
+      top: 20px;
+      left: 20px;
+      width: 65px;
       height: auto;
-      opacity: 0.9;
-      border-radius: 6px;
+      opacity: 0.95;
+      border-radius: 5px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       transition: transform 0.3s;
       z-index: 998;
@@ -147,49 +180,24 @@
       transform: scale(1.1);
     }
 
-    .hero {
-      background: url('https://i.imgur.com/Tv9eJal.jpeg') center center / cover no-repeat;
-      border-radius: 15px;
-      padding: 60px 30px;
-      color: white;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-      animation: fadeIn 1s ease;
+    .footer-corner {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(30, 30, 47, 0.8);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: #aaa;
     }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      color: #ffe600;
-      text-shadow: 2px 2px 5px black;
-    }
-
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.2rem;
-      max-width: 700px;
-      text-shadow: 1px 1px 3px black;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1e1e2f;
-      color: white;
-      font-size: 0.9rem;
-    }
-
-    @media(max-width: 600px) {
-      nav a {
-        margin-left: 10px;
-        font-size: 0.9rem;
+    @media(max-width: 700px) {
+      .inicio-contenido {
+        flex-direction: column;
       }
+
       .flag-colombia {
         width: 50px;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
       }
     }
   </style>
@@ -207,9 +215,14 @@
 </header>
 
 <div id="inicio" class="view active">
-  <div class="hero">
-    <h1>¡Hola! Soy Destras</h1>
-    <p>Apasionado por la tecnología y el desarrollo digital. Me especializo en configurar servidores de Minecraft con sistemas avanzados y crear bots de Discord que automatizan comunidades. Este es mi portafolio personal donde muestro mis habilidades y proyectos destacados.</p>
+  <div class="inicio-contenido">
+    <div class="inicio-texto">
+      <h1>¡Hola! Soy Destras</h1>
+      <p>Soy un apasionado por la tecnología y el desarrollo digital. Me dedico a configurar servidores de Minecraft con sistemas avanzados, crear bots de Discord para automatizar comunidades y explorar constantemente nuevas herramientas. En este portafolio encontrarás mis proyectos, experiencias y habilidades.</p>
+    </div>
+    <div class="inicio-imagen">
+      <img src="https://i.imgur.com/Tv9eJal.jpeg" alt="Medellín, Colombia">
+    </div>
   </div>
 </div>
 
@@ -243,9 +256,9 @@
 
 <img class="flag-colombia" src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia">
 
-<footer>
-  &copy; 2025 Destras — Todos los derechos reservados.
-</footer>
+<div class="footer-corner">
+  &copy; 2025 Destras — Todos los derechos reservados
+</div>
 
 <script>
   function mostrarVista(id) {
