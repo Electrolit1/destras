@@ -47,6 +47,31 @@
       flex-direction: column;
       align-items: center;
       animation: fadeIn 0.8s ease forwards;
+      position: relative;
+    }
+
+    .language-select {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 8px 15px;
+      box-shadow:
+        0 0 10px rgba(255, 214, 0, 0.7);
+      user-select: none;
+      color: #ddd;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+      outline: none;
+    }
+    .language-select:hover,
+    .language-select:focus {
+      border-color: #FFD600;
+      color: #fff;
     }
 
     .card-header {
@@ -109,6 +134,7 @@
       width: 100%;
     }
 
+    /* BOTONES CON BORDE COLOR GRADIENTE Y FONDO TRANSPARENTE */
     .btn {
       flex: 1;
       min-width: 150px;
@@ -331,55 +357,68 @@
         width: 100%;
         justify-content: center;
       }
+      .language-select {
+        position: static;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 200px;
+      }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
+    <!-- Selector de idioma -->
+    <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
+      <option value="es" selected>Español 🇨🇴</option>
+      <option value="en">English 🇺🇸</option>
+    </select>
+
     <div class="card-header">
       <div>
-        <div class="name">Destras</div>
-        <div class="role">Manager & Developer de Minecraft</div>
+        <div class="name" id="name-title">Destras</div>
+        <div class="role" id="role-title">Manager & Developer de Minecraft</div>
       </div>
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg"
         alt="Bandera de Colombia"
         class="bandera"
+        id="flag-image"
       />
     </div>
 
     <div id="inicio" class="view active">
-      <div class="desc">
+      <div class="desc" id="desc-inicio">
         ¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y
         el desarrollo de comunidades online. Me especializo en configurar
         servidores de Minecraft con sistemas avanzados y crear bots de Discord
         personalizados. En este portafolio verás mis proyectos y habilidades.
       </div>
       <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('sobre')"
-          ><i class="fas fa-user"></i> Sobre mí</a
-        >
-        <a href="#" class="btn" onclick="mostrarVista('proyectos')"
-          ><i class="fas fa-server"></i> Proyectos</a
-        >
-        <a href="#" class="btn" onclick="mostrarVista('contacto')"
-          ><i class="fas fa-envelope"></i> Contacto</a
-        >
+        <a href="#" class="btn" onclick="mostrarVista('sobre')" id="btn-sobre">
+          <i class="fas fa-user"></i> Sobre mí
+        </a>
+        <a href="#" class="btn" onclick="mostrarVista('proyectos')" id="btn-proyectos">
+          <i class="fas fa-server"></i> Proyectos
+        </a>
+        <a href="#" class="btn" onclick="mostrarVista('contacto')" id="btn-contacto">
+          <i class="fas fa-envelope"></i> Contacto
+        </a>
       </div>
     </div>
 
     <div id="sobre" class="view">
-      <div class="desc">
+      <div class="desc" id="desc-sobre">
         Soy una persona autodidacta, creativa y comprometida. Me gusta aprender
         nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque
         está en servidores de Minecraft y automatización de comunidades con
         Discord bots.
       </div>
       <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')"
-          ><i class="fas fa-arrow-left"></i> Volver al inicio</a
-        >
+        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-1">
+          <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
       </div>
     </div>
 
@@ -388,38 +427,38 @@
       <div class="project-banner">
         <div class="project-logo"><i class="fas fa-server"></i></div>
         <div class="project-content">
-          <h3 class="project-title">FearMC Network</h3>
-          <p class="project-desc">
+          <h3 class="project-title" id="proj1-title">FearMC Network</h3>
+          <p class="project-desc" id="proj1-desc">
             Un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.
           </p>
-          <a href="https://discord.fearmc.xyz" target="_blank" class="project-link"
-            ><i class="fab fa-discord"></i> Unirse al Discord</a
-          >
+          <a href="https://discord.fearmc.xyz" target="_blank" class="project-link" id="proj1-link">
+            <i class="fab fa-discord"></i> Unirse al Discord
+          </a>
         </div>
       </div>
 
       <div class="project-banner">
         <div class="project-logo"><i class="fas fa-globe"></i></div>
         <div class="project-content">
-          <h3 class="project-title">Otro Servidor Ejemplo</h3>
-          <p class="project-desc">
+          <h3 class="project-title" id="proj2-title">Otro Servidor Ejemplo</h3>
+          <p class="project-desc" id="proj2-desc">
             Descripción del servidor ejemplo, con detalles importantes y características.
           </p>
-          <a href="#" class="project-link"
-            ><i class="fas fa-globe"></i> Visitar sitio</a
-          >
+          <a href="#" class="project-link" id="proj2-link">
+            <i class="fas fa-globe"></i> Visitar sitio
+          </a>
         </div>
       </div>
 
       <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')"
-          ><i class="fas fa-arrow-left"></i> Volver al inicio</a
-        >
+        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-2">
+          <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
       </div>
     </div>
 
     <div id="contacto" class="view">
-      <div class="desc">
+      <div class="desc" id="desc-contacto">
         ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes
         contactarme directamente:
         <br /><br />
@@ -427,23 +466,25 @@
           href="https://discord.gg/R65AbhnJWY"
           target="_blank"
           class="btn"
+          id="contact-discord"
           ><i class="fab fa-discord"></i> Discord</a
         >
         <a
           href="https://tiktok.com/@destrascol"
           target="_blank"
           class="btn"
+          id="contact-tiktok"
           ><i class="fab fa-tiktok"></i> TikTok</a
         >
       </div>
       <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')"
-          ><i class="fas fa-arrow-left"></i> Volver al inicio</a
-        >
+        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-3">
+          <i class="fas fa-arrow-left"></i> Volver al inicio
+        </a>
       </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" id="footer-text">
       &copy; 2025 Destras — Todos los derechos reservados.
     </div>
   </div>
@@ -454,6 +495,103 @@
       document.getElementById(id).classList.add("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    const textos = {
+      es: {
+        langName: "Español 🇨🇴",
+        role: "Manager & Developer de Minecraft",
+        descInicio: `¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y
+          el desarrollo de comunidades online. Me especializo en configurar
+          servidores de Minecraft con sistemas avanzados y crear bots de Discord
+          personalizados. En este portafolio verás mis proyectos y habilidades.`,
+        btnSobre: "Sobre mí",
+        btnProyectos: "Proyectos",
+        btnContacto: "Contacto",
+        descSobre: `Soy una persona autodidacta, creativa y comprometida. Me gusta aprender
+          nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque
+          está en servidores de Minecraft y automatización de comunidades con
+          Discord bots.`,
+        btnVolverInicio: "Volver al inicio",
+        proj1Title: "FearMC Network",
+        proj1Desc: "Un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.",
+        proj1Link: "Unirse al Discord",
+        proj2Title: "Otro Servidor Ejemplo",
+        proj2Desc: "Descripción del servidor ejemplo, con detalles importantes y características.",
+        proj2Link: "Visitar sitio",
+        descContacto: `¿Te interesa trabajar conmigo o proponer un proyecto? Puedes
+          contactarme directamente:`,
+        contactDiscord: "Discord",
+        contactTikTok: "TikTok",
+        footerText: "© 2025 Destras — Todos los derechos reservados.",
+      },
+      en: {
+        langName: "English 🇺🇸",
+        role: "Minecraft Manager & Developer",
+        descInicio: `Hello! I'm <strong>Destras</strong>, passionate about technology and
+          building online communities. I specialize in setting up
+          Minecraft servers with advanced systems and creating custom Discord bots. Explore my portfolio to see my projects and skills.`,
+        btnSobre: "About Me",
+        btnProyectos: "Projects",
+        btnContacto: "Contact",
+        descSobre: `I am a self-taught, creative, and committed person. I enjoy learning
+          new technologies and always strive to improve what I do. My focus
+          is on Minecraft servers and community automation with Discord bots.`,
+        btnVolverInicio: "Back to Home",
+        proj1Title: "FearMC Network",
+        proj1Desc: "A professional server with unique systems, special events, and an active community.",
+        proj1Link: "Join Discord",
+        proj2Title: "Another Example Server",
+        proj2Desc: "Example server description, with important details and features.",
+        proj2Link: "Visit Site",
+        descContacto: `Interested in working with me or proposing a project? You can
+          contact me directly:`,
+        contactDiscord: "Discord",
+        contactTikTok: "TikTok",
+        footerText: "© 2025 Destras — All rights reserved.",
+      },
+    };
+
+    // Función para actualizar textos según idioma
+    function actualizarIdioma(lang) {
+      const t = textos[lang];
+      document.getElementById("role-title").textContent = t.role;
+      document.getElementById("desc-inicio").innerHTML = t.descInicio;
+      document.getElementById("btn-sobre").childNodes[1].nodeValue = " " + t.btnSobre;
+      document.getElementById("btn-proyectos").childNodes[1].nodeValue = " " + t.btnProyectos;
+      document.getElementById("btn-contacto").childNodes[1].nodeValue = " " + t.btnContacto;
+      document.getElementById("desc-sobre").textContent = t.descSobre;
+      document.querySelectorAll("#btn-volver-inicio-1, #btn-volver-inicio-2, #btn-volver-inicio-3").forEach(el => el.childNodes[1].nodeValue = " " + t.btnVolverInicio);
+      document.getElementById("proj1-title").textContent = t.proj1Title;
+      document.getElementById("proj1-desc").textContent = t.proj1Desc;
+      document.getElementById("proj1-link").childNodes[1].nodeValue = " " + t.proj1Link;
+      document.getElementById("proj2-title").textContent = t.proj2Title;
+      document.getElementById("proj2-desc").textContent = t.proj2Desc;
+      document.getElementById("proj2-link").childNodes[1].nodeValue = " " + t.proj2Link;
+      document.getElementById("desc-contacto").textContent = t.descContacto;
+      document.getElementById("contact-discord").childNodes[1].nodeValue = " " + t.contactDiscord;
+      document.getElementById("contact-tiktok").childNodes[1].nodeValue = " " + t.contactTikTok;
+      document.getElementById("footer-text").textContent = t.footerText;
+
+      // Cambiar bandera y atributo lang
+      const flag = document.getElementById("flag-image");
+      if(lang === "es") {
+        flag.src = "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg";
+        flag.alt = "Bandera de Colombia";
+        document.documentElement.lang = "es";
+      } else {
+        flag.src = "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"; // bandera inglesa
+        flag.alt = "UK Flag";
+        document.documentElement.lang = "en";
+      }
+    }
+
+    // Escuchar cambio en el selector de idioma
+    document.getElementById("language-select").addEventListener("change", (e) => {
+      actualizarIdioma(e.target.value);
+    });
+
+    // Inicializar con español
+    actualizarIdioma("es");
   </script>
 </body>
 </html>
