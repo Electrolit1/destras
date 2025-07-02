@@ -85,7 +85,6 @@
     .name {
       font-size: 2.6rem;
       font-weight: 900;
-      /* degradado suave amarillo-rojo-azul */
       background: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -134,17 +133,15 @@
       width: 100%;
     }
 
-    /* BOTONES CON BORDE COLOR GRADIENTE Y FONDO TRANSPARENTE */
     .btn {
       flex: 1;
       min-width: 150px;
-      background-color: transparent; /* transparente para no resaltar */
+      background-color: transparent;
       border: 2px solid;
       border-image-slice: 1;
       border-width: 2px;
-      /* borde con gradiente amarillo-rojo-azul */
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: #ccc; /* letras neutras, sin color fuerte */
+      color: #ccc;
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: 700;
@@ -166,12 +163,12 @@
     }
 
     .btn:hover {
-      background: transparent; /* sin fondo sólido */
+      background: transparent;
       box-shadow:
         0 0 10px #FFD600,
         0 0 10px #D32F2F,
         0 0 10px #1976D2;
-      color: #fff; /* texto blanco al pasar el mouse */
+      color: #fff;
       transform: scale(1.05);
       border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
     }
@@ -187,7 +184,6 @@
       display: block;
     }
 
-    /* NUEVO ESTILO PARA BANNERS DE PROYECTOS */
     .project-banner {
       background: #2a2a2a;
       border-radius: 15px;
@@ -522,76 +518,83 @@
           contactarme directamente:`,
         contactDiscord: "Discord",
         contactTikTok: "TikTok",
-        footerText: "© 2025 Destras — Todos los derechos reservados.",
+        footerText: "© 2025 Destras — Todos los derechos reservados."
       },
       en: {
         langName: "English 🇺🇸",
         role: "Minecraft Manager & Developer",
         descInicio: `Hello! I'm <strong>Destras</strong>, passionate about technology and
-          building online communities. I specialize in setting up
-          Minecraft servers with advanced systems and creating custom Discord bots. Explore my portfolio to see my projects and skills.`,
+          building online communities. I specialize in configuring
+          Minecraft servers with advanced systems and creating custom Discord bots.
+          Here you'll find my projects and skills.`,
         btnSobre: "About Me",
         btnProyectos: "Projects",
         btnContacto: "Contact",
-        descSobre: `I am a self-taught, creative, and committed person. I enjoy learning
-          new technologies and always strive to improve what I do. My focus
-          is on Minecraft servers and community automation with Discord bots.`,
+        descSobre: `I'm a self-taught, creative, and committed person. I love learning
+          new technologies and always strive to improve. My focus
+          is on Minecraft servers and community automation with
+          Discord bots.`,
         btnVolverInicio: "Back to Home",
         proj1Title: "FearMC Network",
         proj1Desc: "A professional server with unique systems, special events, and an active community.",
-        proj1Link: "Join Discord",
-        proj2Title: "Another Example Server",
-        proj2Desc: "Example server description, with important details and features.",
+        proj1Link: "Join the Discord",
+        proj2Title: "Another Sample Server",
+        proj2Desc: "Example server description with important details and features.",
         proj2Link: "Visit Site",
         descContacto: `Interested in working with me or proposing a project? You can
           contact me directly:`,
         contactDiscord: "Discord",
         contactTikTok: "TikTok",
-        footerText: "© 2025 Destras — All rights reserved.",
-      },
+        footerText: "© 2025 Destras — All rights reserved."
+      }
     };
 
-    // Función para actualizar textos según idioma
-    function actualizarIdioma(lang) {
+    const flagURLs = {
+      es: "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg",
+      en: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+    };
+
+    const languageSelect = document.getElementById("language-select");
+
+    function cambiarIdioma(lang) {
       const t = textos[lang];
-      document.getElementById("role-title").textContent = t.role;
+
+      document.getElementById("role-title").innerHTML = t.role;
       document.getElementById("desc-inicio").innerHTML = t.descInicio;
-      document.getElementById("btn-sobre").childNodes[1].nodeValue = " " + t.btnSobre;
-      document.getElementById("btn-proyectos").childNodes[1].nodeValue = " " + t.btnProyectos;
-      document.getElementById("btn-contacto").childNodes[1].nodeValue = " " + t.btnContacto;
-      document.getElementById("desc-sobre").textContent = t.descSobre;
-      document.querySelectorAll("#btn-volver-inicio-1, #btn-volver-inicio-2, #btn-volver-inicio-3").forEach(el => el.childNodes[1].nodeValue = " " + t.btnVolverInicio);
+      document.getElementById("btn-sobre").textContent = t.btnSobre;
+      document.getElementById("btn-proyectos").textContent = t.btnProyectos;
+      document.getElementById("btn-contacto").textContent = t.btnContacto;
+
+      document.getElementById("desc-sobre").innerHTML = t.descSobre;
+      document.getElementById("btn-volver-inicio-1").textContent = t.btnVolverInicio;
+      document.getElementById("btn-volver-inicio-2").textContent = t.btnVolverInicio;
+      document.getElementById("btn-volver-inicio-3").textContent = t.btnVolverInicio;
+
       document.getElementById("proj1-title").textContent = t.proj1Title;
       document.getElementById("proj1-desc").textContent = t.proj1Desc;
-      document.getElementById("proj1-link").childNodes[1].nodeValue = " " + t.proj1Link;
+      document.getElementById("proj1-link").textContent = t.proj1Link;
+
       document.getElementById("proj2-title").textContent = t.proj2Title;
       document.getElementById("proj2-desc").textContent = t.proj2Desc;
-      document.getElementById("proj2-link").childNodes[1].nodeValue = " " + t.proj2Link;
-      document.getElementById("desc-contacto").textContent = t.descContacto;
-      document.getElementById("contact-discord").childNodes[1].nodeValue = " " + t.contactDiscord;
-      document.getElementById("contact-tiktok").childNodes[1].nodeValue = " " + t.contactTikTok;
+      document.getElementById("proj2-link").textContent = t.proj2Link;
+
+      document.getElementById("desc-contacto").innerHTML = t.descContacto;
+      document.getElementById("contact-discord").textContent = t.contactDiscord;
+      document.getElementById("contact-tiktok").textContent = t.contactTikTok;
+
       document.getElementById("footer-text").textContent = t.footerText;
 
-      // Cambiar bandera y atributo lang
-      const flag = document.getElementById("flag-image");
-      if(lang === "es") {
-        flag.src = "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg";
-        flag.alt = "Bandera de Colombia";
-        document.documentElement.lang = "es";
-      } else {
-        flag.src = "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg"; // bandera inglesa
-        flag.alt = "UK Flag";
-        document.documentElement.lang = "en";
-      }
+      // Cambiar bandera
+      document.getElementById("flag-image").src = flagURLs[lang];
+      document.getElementById("flag-image").alt = lang === "es" ? "Bandera de Colombia" : "Flag of the United States";
     }
 
-    // Escuchar cambio en el selector de idioma
-    document.getElementById("language-select").addEventListener("change", (e) => {
-      actualizarIdioma(e.target.value);
+    languageSelect.addEventListener("change", (e) => {
+      cambiarIdioma(e.target.value);
     });
 
-    // Inicializar con español
-    actualizarIdioma("es");
+    // Inicializar con el idioma seleccionado (español por defecto)
+    cambiarIdioma(languageSelect.value);
   </script>
 </body>
 </html>
