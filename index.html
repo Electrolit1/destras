@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Destras | Portafolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Segoe UI", sans-serif;
       background-color: #0e0e0e;
       color: #e0e0e0;
       overflow-x: hidden;
+      /* Animación suave para todo el body */
+      animation: bgPulse 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      0% {
+        background-color: #0e0e0e;
+      }
+      50% {
+        background-color: #161616;
+      }
+      100% {
+        background-color: #0e0e0e;
+      }
     }
 
     header {
@@ -25,12 +42,28 @@
       top: 0;
       width: 100%;
       z-index: 999;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e74c3c;
+      animation: slideDown 0.7s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
       color: #e74c3c;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px #e74c3c;
     }
 
     nav a {
@@ -38,11 +71,28 @@
       margin-left: 25px;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s, text-shadow 0.3s;
+      position: relative;
     }
 
     nav a:hover {
       color: #e74c3c;
+      text-shadow: 0 0 8px #e74c3c;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: #e74c3c;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .container {
@@ -50,6 +100,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 80vh;
     }
 
     .card {
@@ -58,9 +109,22 @@
       padding: 40px;
       width: 90%;
       max-width: 800px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      box-shadow:
+        0 0 15px rgba(231, 76, 60, 0.7),
+        inset 0 0 20px rgba(231, 76, 60, 0.2);
       position: relative;
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.8s ease forwards;
+      border: 2px solid transparent;
+      transition: border-color 0.5s ease;
+    }
+
+    .card:hover {
+      border-color: #e74c3c;
+      box-shadow:
+        0 0 25px rgba(231, 76, 60, 0.9),
+        inset 0 0 25px rgba(231, 76, 60, 0.3);
+      transform: scale(1.02);
+      transition: all 0.5s ease;
     }
 
     .card-header {
@@ -70,27 +134,42 @@
     }
 
     .name {
-      font-size: 2.4rem;
-      font-weight: bold;
+      font-size: 2.6rem;
+      font-weight: 900;
       color: #e74c3c;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px #e74c3c;
+      user-select: none;
     }
 
     .role {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin-top: 8px;
       color: #ccc;
+      font-style: italic;
     }
 
     .bandera {
-      width: 60px;
-      border-radius: 6px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      width: 65px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
+      transition: transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+      filter: drop-shadow(0 0 4px #e74c3c);
+    }
+
+    .bandera:hover {
+      transform: rotate(10deg) scale(1.1);
     }
 
     .desc {
       margin-top: 25px;
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ddd;
+      letter-spacing: 0.4px;
+      user-select: text;
     }
 
     .buttons {
@@ -109,22 +188,35 @@
       color: #fff;
       padding: 12px 18px;
       border-radius: 12px;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
       text-align: center;
       text-decoration: none;
+      box-shadow: 0 0 10px transparent;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn i {
+      font-size: 1.1rem;
     }
 
     .btn:hover {
       background-color: #e74c3c;
+      box-shadow: 0 0 12px #e74c3c;
+      color: #fff;
+      transform: scale(1.05);
     }
 
     .view {
       display: none;
       margin-top: 30px;
-      animation: fadeIn 0.6s ease;
+      animation: fadeIn 0.6s ease forwards;
     }
 
     .view.active {
@@ -133,27 +225,57 @@
 
     .footer {
       margin-top: 60px;
-      font-size: 0.9rem;
-      color: #888;
-      text-align: right;
+      font-size: 0.95rem;
+      color: #bbb;
+      text-align: center; /* CENTRADO */
       width: 90%;
       max-width: 800px;
+      user-select: none;
+      padding: 15px 0;
+      border-top: 1px solid #333;
+      letter-spacing: 0.6px;
+      animation: fadeInUp 1s ease forwards;
+      filter: drop-shadow(0 0 3px #e74c3c);
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    @media(max-width: 600px) {
-      nav a { margin-left: 10px; font-size: 0.9rem; }
-      .card-header { flex-direction: column; align-items: flex-start; }
-      .bandera { margin-top: 15px; }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        margin-left: 10px;
+        font-size: 0.9rem;
+      }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .bandera {
+        margin-top: 15px;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">Destras</div>
     <nav>
@@ -165,56 +287,95 @@
   </header>
 
   <div class="container">
-
     <div class="card">
       <div class="card-header">
         <div>
           <div class="name">Destras</div>
           <div class="role">Manager & Developer de Minecraft</div>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" class="bandera">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg"
+          alt="Bandera de Colombia"
+          class="bandera"
+        />
       </div>
 
       <div id="inicio" class="view active">
         <div class="desc">
-          ¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y el desarrollo de comunidades online. Me especializo en configurar servidores de Minecraft con sistemas avanzados y crear bots de Discord personalizados. En este portafolio verás mis proyectos y habilidades.
+          ¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y
+          el desarrollo de comunidades online. Me especializo en configurar
+          servidores de Minecraft con sistemas avanzados y crear bots de Discord
+          personalizados. En este portafolio verás mis proyectos y habilidades.
         </div>
         <div class="buttons">
-          <a href="#" class="btn" onclick="mostrarVista('sobre')"><i class="fas fa-user"></i> Sobre mí</a>
-          <a href="#" class="btn" onclick="mostrarVista('proyectos')"><i class="fas fa-server"></i> Proyectos</a>
-          <a href="#" class="btn" onclick="mostrarVista('contacto')"><i class="fas fa-envelope"></i> Contacto</a>
+          <a href="#" class="btn" onclick="mostrarVista('sobre')"
+            ><i class="fas fa-user"></i> Sobre mí</a
+          >
+          <a href="#" class="btn" onclick="mostrarVista('proyectos')"
+            ><i class="fas fa-server"></i> Proyectos</a
+          >
+          <a href="#" class="btn" onclick="mostrarVista('contacto')"
+            ><i class="fas fa-envelope"></i> Contacto</a
+          >
         </div>
       </div>
 
       <div id="sobre" class="view">
         <div class="desc">
-          Soy una persona autodidacta, creativa y comprometida. Me gusta aprender nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque está en servidores de Minecraft y automatización de comunidades con Discord bots.
+          Soy una persona autodidacta, creativa y comprometida. Me gusta aprender
+          nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque
+          está en servidores de Minecraft y automatización de comunidades con
+          Discord bots.
         </div>
         <div class="buttons">
-          <a href="#" class="btn" onclick="mostrarVista('inicio')"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+          <a href="#" class="btn" onclick="mostrarVista('inicio')"
+            ><i class="fas fa-arrow-left"></i> Volver al inicio</a
+          >
         </div>
       </div>
 
       <div id="proyectos" class="view">
         <div class="desc">
-          <strong>FearMC Network:</strong> un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.
-          <br><br>
-          <a href="https://discord.fearmc.xyz" target="_blank" class="btn" style="margin-top: 15px;">Unirse al Discord</a>
+          <strong>FearMC Network:</strong> un servidor profesional con sistemas
+          únicos, eventos especiales y comunidad activa.
+          <br /><br />
+          <a
+            href="https://discord.fearmc.xyz"
+            target="_blank"
+            class="btn"
+            style="margin-top: 15px"
+            >Unirse al Discord</a
+          >
         </div>
         <div class="buttons">
-          <a href="#" class="btn" onclick="mostrarVista('inicio')"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+          <a href="#" class="btn" onclick="mostrarVista('inicio')"
+            ><i class="fas fa-arrow-left"></i> Volver al inicio</a
+          >
         </div>
       </div>
 
       <div id="contacto" class="view">
         <div class="desc">
-          ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes contactarme directamente:
-          <br><br>
-          <a href="https://discord.gg/R65AbhnJWY" target="_blank" class="btn"><i class="fab fa-discord"></i> Discord</a>
-          <a href="https://tiktok.com/@destrascol" target="_blank" class="btn"><i class="fab fa-tiktok"></i> TikTok</a>
+          ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes
+          contactarme directamente:
+          <br /><br />
+          <a
+            href="https://discord.gg/R65AbhnJWY"
+            target="_blank"
+            class="btn"
+            ><i class="fab fa-discord"></i> Discord</a
+          >
+          <a
+            href="https://tiktok.com/@destrascol"
+            target="_blank"
+            class="btn"
+            ><i class="fab fa-tiktok"></i> TikTok</a
+          >
         </div>
         <div class="buttons">
-          <a href="#" class="btn" onclick="mostrarVista('inicio')"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+          <a href="#" class="btn" onclick="mostrarVista('inicio')"
+            ><i class="fas fa-arrow-left"></i> Volver al inicio</a
+          >
         </div>
       </div>
     </div>
@@ -226,9 +387,10 @@
 
   <script>
     function mostrarVista(id) {
-      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   </script>
 </body>
+</html>
