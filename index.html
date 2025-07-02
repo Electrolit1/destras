@@ -13,7 +13,7 @@
       margin: 0;
       font-family: "Segoe UI", sans-serif;
       background-color: #0e0e0e;
-      color: transparent; /* quitamos color directo */
+      color: #fff; /* letras blancas */
       overflow-x: hidden;
       animation: bgPulse 10s ease-in-out infinite alternate;
       display: flex;
@@ -41,27 +41,27 @@
       width: 90%;
       max-width: 800px;
       box-shadow:
-        0 0 20px rgba(255, 214, 0, 0.6),
-        inset 0 0 30px rgba(255, 214, 0, 0.15);
+        0 0 20px rgba(211, 47, 47, 0.6),
+        inset 0 0 30px rgba(211, 47, 47, 0.15);
       display: flex;
       flex-direction: column;
       align-items: center;
       animation: fadeIn 0.8s ease forwards;
       position: relative;
+      color: #fff; /* asegurar texto blanco */
     }
 
-    /* Moví el selector debajo del header, centrado */
+    /* Selector de idioma */
     .language-select {
       margin: 20px 0 40px 0;
       background: transparent;
       border-radius: 12px;
       padding: 8px 15px;
-      border: 2px solid #FFD600;
-      color: transparent; /* texto invisible */
+      border: 2px solid #D32F2F; /* rojo */
+      color: #fff;
       font-weight: 700;
       font-size: 0.9rem;
       cursor: pointer;
-      -webkit-text-stroke: 1px #FFD600;
       transition: all 0.3s ease;
       outline: none;
       user-select: none;
@@ -70,8 +70,8 @@
     }
     .language-select:hover,
     .language-select:focus {
-      color: #FFD600; /* aparece color relleno en hover */
-      -webkit-text-stroke: 0;
+      background-color: #D32F2F;
+      color: #fff;
       border-color: #fff;
     }
 
@@ -86,33 +86,32 @@
     .name {
       font-size: 2.6rem;
       font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1.5px #FFD600;
+      color: #fff;
       letter-spacing: 1.5px;
       user-select: none;
-      text-shadow: 0 0 6px rgba(255, 214, 0, 0.7);
+      text-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
       background: none !important;
       -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: transparent !important;
+      -webkit-text-fill-color: #fff !important;
     }
 
     .role {
       font-size: 1.25rem;
       margin-top: 8px;
-      color: transparent;
-      -webkit-text-stroke: 0.8px #ccc;
+      color: #fff;
       font-style: italic;
       user-select: none;
+      text-shadow: 0 0 5px rgba(211, 47, 47, 0.6);
     }
 
     .bandera {
       width: 65px;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255, 214, 0, 0.7);
+      box-shadow: 0 0 15px rgba(211, 47, 47, 0.7);
       transition: transform 0.3s ease;
       cursor: default;
       user-select: none;
-      filter: drop-shadow(0 0 6px #FFD600);
+      filter: drop-shadow(0 0 6px #D32F2F);
     }
 
     .bandera:hover {
@@ -123,11 +122,11 @@
       margin-top: 15px;
       font-size: 1.1rem;
       line-height: 1.7;
-      color: transparent;
-      -webkit-text-stroke: 0.7px #ddd;
+      color: #fff;
       letter-spacing: 0.4px;
       user-select: text;
       text-align: center;
+      text-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
     }
 
     .buttons {
@@ -143,12 +142,8 @@
       flex: 1;
       min-width: 150px;
       background-color: transparent !important;
-      border: 2px solid;
-      border-image-slice: 1;
-      border-width: 2px;
-      border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: transparent;
-      -webkit-text-stroke: 0.9px #ccc;
+      border: 2px solid #D32F2F; /* borde rojo */
+      color: #fff;
       padding: 12px 18px;
       border-radius: 12px;
       font-weight: 700;
@@ -167,21 +162,17 @@
 
     .btn i {
       font-size: 1.1rem;
-      color: #FFD600; /* para los íconos dejar color amarillo */
-      -webkit-text-stroke: 0;
+      color: #D32F2F; /* iconos en rojo */
       user-select: none;
     }
 
     .btn:hover {
-      background: transparent;
+      background: #D32F2F;
       box-shadow:
-        0 0 10px #FFD600,
-        0 0 10px #D32F2F,
-        0 0 10px #1976D2;
+        0 0 10px #D32F2F;
       color: #fff !important;
-      -webkit-text-stroke: 0;
       transform: scale(1.05);
-      border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
+      border-color: #D32F2F;
     }
 
     .view {
@@ -200,7 +191,7 @@
       border-radius: 15px;
       padding: 20px 25px;
       margin-bottom: 25px;
-      box-shadow: 0 0 15px rgba(255, 214, 0, 0.5);
+      box-shadow: 0 0 15px rgba(211, 47, 47, 0.5);
       transition: box-shadow 0.4s ease;
       display: flex;
       flex-direction: row;
@@ -210,20 +201,17 @@
 
     .project-banner:hover {
       box-shadow:
-        0 0 25px #FFD600,
-        0 0 25px #D32F2F,
-        0 0 25px #1976D2;
+        0 0 25px #D32F2F;
       transform: scale(1.02);
       transition: all 0.4s ease;
     }
 
     .project-logo {
       font-size: 3rem;
-      color: transparent;
-      -webkit-text-stroke: 1.8px #FFD600;
+      color: #fff;
       flex-shrink: 0;
       user-select: none;
-      filter: drop-shadow(0 0 4px #FFD600);
+      filter: drop-shadow(0 0 4px #D32F2F);
       background: none !important;
     }
 
@@ -237,21 +225,18 @@
     .project-title {
       font-size: 1.8rem;
       font-weight: 800;
-      color: transparent;
-      -webkit-text-stroke: 1.2px #FFD600;
+      color: #fff;
       user-select: none;
       margin: 0;
-      text-shadow:
-        0 0 5px rgba(255,214,0,0.6);
+      text-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
       background: none !important;
       -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: transparent !important;
+      -webkit-text-fill-color: #fff !important;
     }
 
     .project-desc {
       font-size: 1.05rem;
-      color: transparent;
-      -webkit-text-stroke: 0.7px #ccc;
+      color: #fff;
       line-height: 1.5;
       user-select: text;
       margin: 0;
@@ -261,12 +246,8 @@
       align-self: flex-start;
       margin-top: 8px;
       background-color: transparent !important;
-      border: 2px solid;
-      border-image-slice: 1;
-      border-width: 2px;
-      border-image-source: linear-gradient(45deg, #FFD600, #D32F2F, #1976D2);
-      color: transparent;
-      -webkit-text-stroke: 0.9px #fff;
+      border: 2px solid #D32F2F;
+      color: #fff;
       padding: 10px 20px;
       border-radius: 10px;
       font-weight: 700;
@@ -280,26 +261,21 @@
     }
 
     .project-link i {
-      color: #FFD600; /* ícono visible */
-      -webkit-text-stroke: 0;
+      color: #D32F2F; /* ícono rojo */
     }
 
     .project-link:hover {
-      background: transparent;
+      background: #D32F2F;
       box-shadow:
-        0 0 15px #FFD600,
-        0 0 15px #D32F2F,
-        0 0 15px #1976D2;
+        0 0 15px #D32F2F;
       transform: scale(1.05);
       color: #fff !important;
-      -webkit-text-stroke: 0;
     }
 
     .footer {
       margin-top: 60px;
       font-size: 0.95rem;
-      color: transparent;
-      -webkit-text-stroke: 0.6px #bbb;
+      color: #bbb;
       text-align: center;
       width: 90%;
       max-width: 800px;
@@ -308,7 +284,7 @@
       border-top: 1px solid #333;
       letter-spacing: 0.6px;
       animation: fadeInUp 1s ease forwards;
-      filter: drop-shadow(0 0 3px #FFD600);
+      filter: drop-shadow(0 0 3px #D32F2F);
     }
 
     @keyframes fadeIn {
