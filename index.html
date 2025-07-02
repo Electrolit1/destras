@@ -15,7 +15,6 @@
       background-color: #0e0e0e;
       color: #e0e0e0;
       overflow-x: hidden;
-      /* Animación suave para todo el body */
       animation: bgPulse 10s ease-in-out infinite alternate;
     }
 
@@ -31,72 +30,10 @@
       }
     }
 
-    header {
-      background: #1a1a1a;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #e74c3c;
-      animation: slideDown 0.7s ease forwards;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #e74c3c;
-      letter-spacing: 2px;
-      text-shadow: 0 0 8px #e74c3c;
-    }
-
-    nav a {
-      color: #fff;
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s, text-shadow 0.3s;
-      position: relative;
-    }
-
-    nav a:hover {
-      color: #e74c3c;
-      text-shadow: 0 0 8px #e74c3c;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: -6px;
-      left: 0;
-      background-color: #e74c3c;
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    /* HEADER eliminado */
 
     .container {
-      padding-top: 120px;
+      padding-top: 60px; /* menos para compensar header removido */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -110,8 +47,8 @@
       width: 90%;
       max-width: 800px;
       box-shadow:
-        0 0 15px rgba(231, 76, 60, 0.7),
-        inset 0 0 20px rgba(231, 76, 60, 0.2);
+        0 0 15px rgba(176, 58, 58, 0.7),
+        inset 0 0 20px rgba(176, 58, 58, 0.2);
       position: relative;
       animation: fadeIn 0.8s ease forwards;
       border: 2px solid transparent;
@@ -119,10 +56,10 @@
     }
 
     .card:hover {
-      border-color: #e74c3c;
+      border-color: #b03a3a;
       box-shadow:
-        0 0 25px rgba(231, 76, 60, 0.9),
-        inset 0 0 25px rgba(231, 76, 60, 0.3);
+        0 0 25px rgba(176, 58, 58, 0.9),
+        inset 0 0 25px rgba(176, 58, 58, 0.3);
       transform: scale(1.02);
       transition: all 0.5s ease;
     }
@@ -131,14 +68,15 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      margin-bottom: 20px;
     }
 
     .name {
       font-size: 2.6rem;
       font-weight: 900;
-      color: #e74c3c;
+      color: #b03a3a;
       letter-spacing: 1.5px;
-      text-shadow: 0 0 8px #e74c3c;
+      text-shadow: 0 0 6px #b03a3a;
       user-select: none;
     }
 
@@ -152,11 +90,11 @@
     .bandera {
       width: 65px;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
+      box-shadow: 0 0 12px rgba(176, 58, 58, 0.7);
       transition: transform 0.3s ease;
       cursor: default;
       user-select: none;
-      filter: drop-shadow(0 0 4px #e74c3c);
+      filter: drop-shadow(0 0 4px #b03a3a);
     }
 
     .bandera:hover {
@@ -164,7 +102,7 @@
     }
 
     .desc {
-      margin-top: 25px;
+      margin-top: 15px;
       font-size: 1.1rem;
       line-height: 1.7;
       color: #ddd;
@@ -184,7 +122,7 @@
       flex: 1;
       min-width: 150px;
       background-color: #1f1f1f;
-      border: 2px solid #e74c3c;
+      border: 2px solid #b03a3a;
       color: #fff;
       padding: 12px 18px;
       border-radius: 12px;
@@ -207,8 +145,8 @@
     }
 
     .btn:hover {
-      background-color: #e74c3c;
-      box-shadow: 0 0 12px #e74c3c;
+      background-color: #b03a3a;
+      box-shadow: 0 0 12px #b03a3a;
       color: #fff;
       transform: scale(1.05);
     }
@@ -223,11 +161,71 @@
       display: block;
     }
 
+    /* NUEVO ESTILO PARA BANNERS DE PROYECTOS */
+    .project-banner {
+      background: #2a2a2a;
+      border-radius: 15px;
+      padding: 20px 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 12px rgba(176, 58, 58, 0.6);
+      transition: box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .project-banner:hover {
+      box-shadow: 0 0 25px rgba(176, 58, 58, 0.9);
+      transform: scale(1.02);
+      transition: all 0.4s ease;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #b03a3a;
+      text-shadow: 0 0 6px #b03a3a;
+      margin: 0;
+      user-select: none;
+    }
+
+    .project-desc {
+      font-size: 1.05rem;
+      color: #ccc;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    .project-link {
+      align-self: flex-start;
+      margin-top: 8px;
+      background-color: #1f1f1f;
+      border: 2px solid #b03a3a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 10px transparent;
+      transition: all 0.3s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-link:hover {
+      background-color: #b03a3a;
+      box-shadow: 0 0 12px #b03a3a;
+      transform: scale(1.05);
+      color: #fff;
+    }
+
     .footer {
       margin-top: 60px;
       font-size: 0.95rem;
       color: #bbb;
-      text-align: center; /* CENTRADO */
+      text-align: center;
       width: 90%;
       max-width: 800px;
       user-select: none;
@@ -235,7 +233,7 @@
       border-top: 1px solid #333;
       letter-spacing: 0.6px;
       animation: fadeInUp 1s ease forwards;
-      filter: drop-shadow(0 0 3px #e74c3c);
+      filter: drop-shadow(0 0 3px #b03a3a);
     }
 
     @keyframes fadeIn {
@@ -261,10 +259,6 @@
     }
 
     @media (max-width: 600px) {
-      nav a {
-        margin-left: 10px;
-        font-size: 0.9rem;
-      }
       .card-header {
         flex-direction: column;
         align-items: flex-start;
@@ -272,19 +266,30 @@
       .bandera {
         margin-top: 15px;
       }
+      .buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .project-banner {
+        padding: 15px 20px;
+      }
+      .project-title {
+        font-size: 1.5rem;
+      }
+      .project-desc {
+        font-size: 1rem;
+      }
+      .project-link {
+        padding: 8px 15px;
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Destras</div>
-    <nav>
-      <a href="#" onclick="mostrarVista('inicio')">Inicio</a>
-      <a href="#" onclick="mostrarVista('sobre')">Sobre mí</a>
-      <a href="#" onclick="mostrarVista('proyectos')">Proyectos</a>
-      <a href="#" onclick="mostrarVista('contacto')">Contacto</a>
-    </nav>
-  </header>
 
   <div class="container">
     <div class="card">
@@ -335,18 +340,27 @@
       </div>
 
       <div id="proyectos" class="view">
-        <div class="desc">
-          <strong>FearMC Network:</strong> un servidor profesional con sistemas
-          únicos, eventos especiales y comunidad activa.
-          <br /><br />
-          <a
-            href="https://discord.fearmc.xyz"
-            target="_blank"
-            class="btn"
-            style="margin-top: 15px"
-            >Unirse al Discord</a
+        <!-- Aquí puedes agregar tantos proyectos como quieras -->
+        <div class="project-banner">
+          <h3 class="project-title">FearMC Network</h3>
+          <p class="project-desc">
+            Un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.
+          </p>
+          <a href="https://discord.fearmc.xyz" target="_blank" class="project-link"
+            ><i class="fab fa-discord"></i> Unirse al Discord</a
           >
         </div>
+
+        <div class="project-banner">
+          <h3 class="project-title">Otro Servidor Ejemplo</h3>
+          <p class="project-desc">
+            Descripción del servidor ejemplo, con detalles importantes y características.
+          </p>
+          <a href="#" class="project-link"
+            ><i class="fas fa-globe"></i> Visitar sitio</a
+          >
+        </div>
+
         <div class="buttons">
           <a href="#" class="btn" onclick="mostrarVista('inicio')"
             ><i class="fas fa-arrow-left"></i> Volver al inicio</a
