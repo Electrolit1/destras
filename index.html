@@ -16,11 +16,10 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0e0e0e, #1e1e2f);
+      background: #0e0e0e;
       color: #e0e0e0;
-      min-height: 100vh;
-      position: relative;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     header {
@@ -133,18 +132,41 @@
 
     .flag-colombia {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
+      bottom: 25px;
+      right: 25px;
+      width: 70px;
       height: auto;
-      opacity: 0.8;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      opacity: 0.9;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
       transition: transform 0.3s;
+      z-index: 998;
     }
 
     .flag-colombia:hover {
       transform: scale(1.1);
+    }
+
+    .hero {
+      background: url('https://i.imgur.com/Tv9eJal.jpeg') center center / cover no-repeat;
+      border-radius: 15px;
+      padding: 60px 30px;
+      color: white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1s ease;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #ffe600;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      max-width: 700px;
+      text-shadow: 1px 1px 3px black;
     }
 
     footer {
@@ -152,9 +174,6 @@
       padding: 20px;
       background: #1e1e2f;
       color: white;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
       font-size: 0.9rem;
     }
 
@@ -163,9 +182,14 @@
         margin-left: 10px;
         font-size: 0.9rem;
       }
-
       .flag-colombia {
-        width: 45px;
+        width: 50px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -183,14 +207,16 @@
 </header>
 
 <div id="inicio" class="view active">
-  <h1>Bienvenido a mi portafolio</h1>
-  <p>Soy <strong>Destras</strong>, apasionado por la tecnología, desarrollo de servidores Minecraft y bots para Discord. Aquí conocerás más sobre mis proyectos y habilidades.</p>
+  <div class="hero">
+    <h1>¡Hola! Soy Destras</h1>
+    <p>Apasionado por la tecnología y el desarrollo digital. Me especializo en configurar servidores de Minecraft con sistemas avanzados y crear bots de Discord que automatizan comunidades. Este es mi portafolio personal donde muestro mis habilidades y proyectos destacados.</p>
+  </div>
 </div>
 
 <div id="sobre" class="view">
   <h2>Sobre mí</h2>
   <div class="card">
-    <p>Soy una persona comprometida y autodidacta. Me encanta aprender constantemente y trabajar en proyectos que me reten y me permitan crecer profesionalmente. He trabajado en servidores de Minecraft y automatización de comunidades usando bots de Discord.</p>
+    <p>Soy una persona comprometida, creativa y autodidacta. Me encanta aprender nuevas herramientas para mejorar mis proyectos. Mi enfoque está en crear soluciones eficientes para servidores y comunidades online.</p>
   </div>
 </div>
 
@@ -198,7 +224,7 @@
   <h2>Proyectos destacados</h2>
   <div class="card">
     <h3 style="color: #e74c3c;">FearMC Network</h3>
-    <p>Servidor profesional de Minecraft con sistemas propios, eventos únicos y una comunidad activa.</p>
+    <p>Servidor profesional de Minecraft con sistemas personalizados, eventos únicos y una comunidad muy activa.</p>
     <img src="https://cdn.discordapp.com/icons/1294636323260338226/293ae6e927f656bf0e84db5811b2f7ca.png?size=2048" alt="Logo FearMC">
     <a href="https://discord.fearmc.xyz" target="_blank">Unirse al Discord</a>
   </div>
@@ -207,7 +233,7 @@
 <div id="contacto" class="view">
   <h2>Contacto</h2>
   <div class="card">
-    <p>¿Quieres trabajar conmigo o proponer una colaboración? Puedes escribirme directamente:</p>
+    <p>¿Quieres trabajar conmigo o proponer un proyecto? ¡Escríbeme directamente a través de mis redes!</p>
     <div class="social-icons">
       <a href="https://discord.gg/R65AbhnJWY" target="_blank"><i class="fab fa-discord"></i></a>
       <a href="https://tiktok.com/@destrascol" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -225,6 +251,7 @@
   function mostrarVista(id) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 
