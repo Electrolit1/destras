@@ -2,657 +2,147 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Destras | Portafolio</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda Fácil</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: #0e0e0e;
-      color: #fff; /* letras blancas */
-      overflow-x: hidden;
-      animation: bgPulse 10s ease-in-out infinite alternate;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      padding: 0;
+      background: #f2f2f2;
     }
 
-    @keyframes bgPulse {
-      0% {
-        background-color: #0e0e0e;
-      }
-      50% {
-        background-color: #161616;
-      }
-      100% {
-        background-color: #0e0e0e;
-      }
-    }
-
-    .container {
-      padding: 40px 20px;
-      background-color: #1a1a1a;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 800px;
-      box-shadow:
-        0 0 20px rgba(211, 47, 47, 0.6),
-        inset 0 0 30px rgba(211, 47, 47, 0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: fadeIn 0.8s ease forwards;
-      position: relative;
-      color: #fff; /* asegurar texto blanco */
-    }
-
-    /* Selector de idioma */
-    .language-select {
-      margin: 20px 0 40px 0;
-      background: transparent;
-      border-radius: 12px;
-      padding: 8px 15px;
-      border: 2px solid #D32F2F; /* rojo */
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      outline: none;
-      user-select: none;
-      width: 180px;
-      text-align: center;
-    }
-    .language-select:hover,
-    .language-select:focus {
-      background-color: #D32F2F;
-      color: #fff;
-      border-color: #fff;
-    }
-
-    .card-header {
+    header {
+      background: #008080;
+      color: white;
+      padding: 1em;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      width: 100%;
-      margin-bottom: 10px;
+      align-items: center;
     }
 
-    .name {
-      font-size: 2.6rem;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 1.5px;
-      user-select: none;
-      text-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: #fff !important;
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+      padding: 1em;
     }
 
-    .role {
-      font-size: 1.25rem;
-      margin-top: 8px;
-      color: #fff;
-      font-style: italic;
-      user-select: none;
-      text-shadow: 0 0 5px rgba(211, 47, 47, 0.6);
-    }
-
-    .bandera {
-      width: 65px;
+    .producto {
+      background: white;
+      padding: 1em;
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(211, 47, 47, 0.7);
-      transition: transform 0.3s ease;
-      cursor: default;
-      user-select: none;
-      filter: drop-shadow(0 0 6px #D32F2F);
-    }
-
-    .bandera:hover {
-      transform: rotate(10deg) scale(1.1);
-    }
-
-    .desc {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #fff;
-      letter-spacing: 0.4px;
-      user-select: text;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: center;
-      text-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
     }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 30px;
-      justify-content: center;
+    .producto img {
       width: 100%;
+      height: auto;
     }
 
-    .btn {
-      flex: 1;
-      min-width: 150px;
-      background-color: transparent !important;
-      border: 2px solid #D32F2F; /* borde rojo */
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: none;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    #carrito {
+      background: white;
+      padding: 1em;
+      margin: 1em;
+      border: 1px solid #ccc;
     }
 
-    .btn i {
-      font-size: 1.1rem;
-      color: #D32F2F; /* iconos en rojo */
-      user-select: none;
-    }
-
-    .btn:hover {
-      background: #D32F2F;
-      box-shadow:
-        0 0 10px #D32F2F;
-      color: #fff !important;
-      transform: scale(1.05);
-      border-color: #D32F2F;
-    }
-
-    .view {
+    .oculto {
       display: none;
-      margin-top: 30px;
-      animation: fadeIn 0.6s ease forwards;
-      width: 100%;
     }
 
-    .view.active {
-      display: block;
+    button {
+      background-color: #008080;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 0.5em;
     }
 
-    .project-banner {
-      background: #2a2a2a;
-      border-radius: 15px;
-      padding: 20px 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 15px rgba(211, 47, 47, 0.5);
-      transition: box-shadow 0.4s ease;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .project-banner:hover {
-      box-shadow:
-        0 0 25px #D32F2F;
-      transform: scale(1.02);
-      transition: all 0.4s ease;
-    }
-
-    .project-logo {
-      font-size: 3rem;
-      color: #fff;
-      flex-shrink: 0;
-      user-select: none;
-      filter: drop-shadow(0 0 4px #D32F2F);
-      background: none !important;
-    }
-
-    .project-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .project-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #fff;
-      user-select: none;
-      margin: 0;
-      text-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
-      background: none !important;
-      -webkit-background-clip: unset !important;
-      -webkit-text-fill-color: #fff !important;
-    }
-
-    .project-desc {
-      font-size: 1.05rem;
-      color: #fff;
-      line-height: 1.5;
-      user-select: text;
-      margin: 0;
-    }
-
-    .project-link {
-      align-self: flex-start;
-      margin-top: 8px;
-      background-color: transparent !important;
-      border: 2px solid #D32F2F;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 0 10px transparent;
-      transition: all 0.3s ease;
-      user-select: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .project-link i {
-      color: #D32F2F; /* ícono rojo */
-    }
-
-    .project-link:hover {
-      background: #D32F2F;
-      box-shadow:
-        0 0 15px #D32F2F;
-      transform: scale(1.05);
-      color: #fff !important;
-    }
-
-    /* Nueva sección para contacto con descripción y logos alineados */
-    #contacto .contact-links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    #contacto .contact-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: #fff;
-      border: 2px solid #D32F2F;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      width: 140px;
-      user-select: none;
-    }
-    #contacto .contact-link i {
-      font-size: 2.8rem;
-      color: #D32F2F;
-      margin-bottom: 8px;
-      user-select: none;
-    }
-    #contacto .contact-link:hover {
-      background-color: #D32F2F;
-      color: #fff;
-      box-shadow: 0 0 12px #D32F2F;
-      transform: scale(1.05);
-    }
-    #contacto .contact-desc {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      text-shadow: 0 0 6px rgba(211, 47, 47, 0.4);
-    }
-
-    .footer {
-      margin-top: 60px;
-      font-size: 0.95rem;
-      color: #bbb;
-      text-align: center;
-      width: 90%;
-      max-width: 800px;
-      user-select: none;
-      padding: 15px 0;
-      border-top: 1px solid #333;
-      letter-spacing: 0.6px;
-      animation: fadeInUp 1s ease forwards;
-      filter: drop-shadow(0 0 3px #D32F2F);
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      body {
-        min-height: auto;
-        padding: 20px 0;
-        display: block;
-      }
-      .container {
-        width: 100%;
-        padding: 30px 15px;
-        border-radius: 0;
-      }
-      .card-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-      .bandera {
-        margin-top: 0;
-      }
-      .desc {
-        text-align: center;
-      }
-      .buttons {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-      }
-      .btn {
-        width: 100%;
-      }
-      .project-banner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .project-logo {
-        font-size: 4rem;
-      }
-      .project-link {
-        width: 100%;
-        justify-content: center;
-      }
-      .language-select {
-        position: static;
-        margin: 0 auto 30px auto;
-        width: 180px;
-        display: block;
-      }
-      #contacto .contact-links {
-        flex-direction: column;
-        gap: 20px;
-      }
-      #contacto .contact-link {
-        width: 100%;
-      }
+    button:hover {
+      background-color: #006666;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Tienda Fácil</h1>
+    <button id="ver-carrito">🛒 Ver Carrito (<span id="contador">0</span>)</button>
+  </header>
 
-  <div class="container">
-    <!-- Selector de idioma debajo del header -->
-    <div class="card-header">
-      <div>
-        <div class="name" id="name-title">¡ Destras !</div>
-        <div class="role" id="role-title">Manager & Developer de Minecraft</div>
-      </div>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg"
-        alt="Bandera de Colombia"
-        class="bandera"
-        id="flag-image"
-      />
-    </div>
+  <main id="productos-container">
+    <!-- Aquí se cargan los productos -->
+  </main>
 
-    <select id="language-select" class="language-select" aria-label="Seleccionar idioma">
-      <option value="es" selected>Español 🇨🇴</option>
-      <option value="en">English 🇺🇸</option>
-    </select>
-
-    <div id="inicio" class="view active">
-      <div class="desc" id="desc-inicio">
-        ¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y
-        el desarrollo de comunidades online. Me especializo en configurar
-        servidores de Minecraft con sistemas avanzados y crear bots de Discord
-        personalizados. En este portafolio verás mis proyectos y habilidades.
-      </div>
-      <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('sobre')" id="btn-sobre">
-          <i class="fas fa-user"></i> Sobre mí
-        </a>
-        <a href="#" class="btn" onclick="mostrarVista('proyectos')" id="btn-proyectos">
-          <i class="fas fa-server"></i> Proyectos
-        </a>
-        <a href="#" class="btn" onclick="mostrarVista('contacto')" id="btn-contacto">
-          <i class="fas fa-envelope"></i> Contacto
-        </a>
-      </div>
-    </div>
-
-    <div id="sobre" class="view">
-      <div class="desc" id="desc-sobre">
-        Soy una persona autodidacta, creativa y comprometida. Me gusta aprender
-        nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque
-        está en servidores de Minecraft y automatización de comunidades con
-        Discord bots.
-      </div>
-      <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-1">
-          <i class="fas fa-arrow-left"></i> Volver al inicio
-        </a>
-      </div>
-    </div>
-
-    <div id="proyectos" class="view">
-      <div class="project-banner">
-        <div class="project-logo"><i class="fas fa-server"></i></div>
-        <div class="project-content">
-          <h3 class="project-title" id="proj1-title">FearMC Network</h3>
-          <p class="project-desc" id="proj1-desc">
-            Un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.
-          </p>
-          <a href="https://discord.fearmc.xyz" target="_blank" class="project-link" id="proj1-link">
-            <i class="fab fa-discord"></i> Unirse al Discord
-          </a>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <div class="project-logo"><i class="fas fa-globe"></i></div>
-        <div class="project-content">
-          <h3 class="project-title" id="proj2-title">Esperando otro proyecto</h3>
-          <p class="project-desc" id="proj2-desc">
-            Esperando la informacion del siguiente proyecto.
-          </p>
-          <a href="#" class="project-link" id="proj2-link">
-            <i class="fas fa-globe"></i> Visitar sitio
-          </a>
-        </div>
-      </div>
-
-      <div class="buttons">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-2">
-          <i class="fas fa-arrow-left"></i> Volver al inicio
-        </a>
-      </div>
-    </div>
-
-    <div id="contacto" class="view">
-      <div class="desc-contact-desc" id="desc-contacto-text">
-        ¿Te interesa trabajar conmigo o proponer un proyecto? Puedes contactarme directamente a través de mis redes:
-      </div>
-      <div class="contact-links">
-        <a
-          href="https://discord.gg/R65AbhnJWY"
-          target="_blank"
-          class="contact-link"
-          id="contact-discord"
-          aria-label="Discord"
-        >
-          <i class="fab fa-discord"></i>
-          Discord
-          <small style="font-weight: 400; margin-top: 5px; font-size: 0.85rem; color: #eee;">
-            Únete a mi comunidad y chatea conmigo
-          </small>
-        </a>
-
-        <a
-          href="https://tiktok.com/@destrascol"
-          target="_blank"
-          class="contact-link"
-          id="contact-tiktok"
-          aria-label="TikTok"
-        >
-          <i class="fab fa-tiktok"></i>
-          TikTok
-          <small style="font-weight: 400; margin-top: 5px; font-size: 0.85rem; color: #eee;">
-            Sígueme para contenido de tecnología y más
-          </small>
-        </a>
-      </div>
-      <div class="buttons" style="margin-top: 30px;">
-        <a href="#" class="btn" onclick="mostrarVista('inicio')" id="btn-volver-inicio-3">
-          <i class="fas fa-arrow-left"></i> Volver al inicio
-        </a>
-      </div>
-    </div>
-
-    <div class="footer" id="footer-text">
-      &copy; 2025 Destras — Todos los derechos reservados.
-    </div>
+  <div id="carrito" class="oculto">
+    <h2>Tu Carrito</h2>
+    <ul id="carrito-lista"></ul>
+    <p>Total: $<span id="carrito-total">0</span></p>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
   </div>
 
   <script>
-    function mostrarVista(id) {
-      document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    const productos = [
+      { id: 1, nombre: "Camiseta", precio: 25000, imagen: "https://via.placeholder.com/150" },
+      { id: 2, nombre: "Gorra", precio: 15000, imagen: "https://via.placeholder.com/150" },
+      { id: 3, nombre: "Zapatos", precio: 90000, imagen: "https://via.placeholder.com/150" },
+    ];
+
+    const contenedor = document.getElementById("productos-container");
+    const carritoLista = document.getElementById("carrito-lista");
+    const carritoTotal = document.getElementById("carrito-total");
+    const verCarrito = document.getElementById("ver-carrito");
+    const contador = document.getElementById("contador");
+    const carritoDiv = document.getElementById("carrito");
+
+    let carrito = [];
+
+    function renderProductos() {
+      productos.forEach(producto => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.nombre}">
+          <h3>${producto.nombre}</h3>
+          <p>$${producto.precio}</p>
+          <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+        `;
+        contenedor.appendChild(div);
+      });
     }
 
-    const textos = {
-      es: {
-        langName: "Español 🇨🇴",
-        role: "Manager & Developer de Minecraft",
-        descInicio: `¡Hola! Soy <strong>Destras</strong>, un apasionado por la tecnología y
-          el desarrollo de comunidades online. Me especializo en configurar
-          servidores de Minecraft con sistemas avanzados y crear bots de Discord
-          personalizados. En este portafolio verás mis proyectos y habilidades.`,
-        btnSobre: "Sobre mí",
-        btnProyectos: "Proyectos",
-        btnContacto: "Contacto",
-        descSobre: `Soy una persona autodidacta, creativa y comprometida. Me gusta aprender
-          nuevas tecnologías y siempre busco mejorar en lo que hago. Mi enfoque
-          está en servidores de Minecraft y automatización de comunidades con
-          Discord bots.`,
-        btnVolverInicio: "Volver al inicio",
-        proj1Title: "FearMC Network",
-        proj1Desc: "Un servidor profesional con sistemas únicos, eventos especiales y comunidad activa.",
-        proj1Link: "Unirse al Discord",
-        proj2Title: "Esperando otro proyecto",
-        proj2Desc: "Esperando al informacion de mi siguiente proyecto.",
-        proj2Link: "Visitar sitio",
-        descContacto: `¿Te interesa trabajar conmigo o proponer un proyecto? Puedes
-          contactarme directamente:`,
-        contactDiscord: "Discord",
-        contactTikTok: "TikTok",
-        footerText: "© 2025 Destras — Todos los derechos reservados."
-      },
-      en: {
-        langName: "English 🇺🇸",
-        role: "Minecraft Manager & Developer",
-        descInicio: `Hello! I'm <strong>Destras</strong>, passionate about technology and
-          building online communities. I specialize in configuring
-          Minecraft servers with advanced systems and creating custom Discord bots.
-          Here you'll find my projects and skills.`,
-        btnSobre: "About Me",
-        btnProyectos: "Projects",
-        btnContacto: "Contact",
-        descSobre: `I'm a self-taught, creative, and committed person. I love learning
-          new technologies and always strive to improve. My focus
-          is on Minecraft servers and community automation with
-          Discord bots.`,
-        btnVolverInicio: "Back to Home",
-        proj1Title: "FearMC Network",
-        proj1Desc: "A professional server with unique systems, special events, and an active community.",
-        proj1Link: "Join the Discord",
-        proj2Title: "Waiting for another project",
-        proj2Desc: "Waiting for information on my next project.",
-        proj2Link: "Visit Site",
-        descContacto: `Interested in working with me or proposing a project? You can
-          contact me directly:`,
-        contactDiscord: "Discord",
-        contactTikTok: "TikTok",
-        footerText: "© 2025 Destras — All rights reserved."
-      }
-    };
-
-    const flagURLs = {
-      es: "https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg",
-      en: "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
-    };
-
-    const languageSelect = document.getElementById("language-select");
-
-    function cambiarIdioma(lang) {
-      const t = textos[lang];
-
-      document.getElementById("role-title").innerHTML = t.role;
-      document.getElementById("desc-inicio").innerHTML = t.descInicio;
-      document.getElementById("btn-sobre").textContent = t.btnSobre;
-      document.getElementById("btn-proyectos").textContent = t.btnProyectos;
-      document.getElementById("btn-contacto").textContent = t.btnContacto;
-
-      document.getElementById("desc-sobre").innerHTML = t.descSobre;
-      document.getElementById("btn-volver-inicio-1").textContent = t.btnVolverInicio;
-      document.getElementById("btn-volver-inicio-2").textContent = t.btnVolverInicio;
-      document.getElementById("btn-volver-inicio-3").textContent = t.btnVolverInicio;
-
-      document.getElementById("proj1-title").textContent = t.proj1Title;
-      document.getElementById("proj1-desc").textContent = t.proj1Desc;
-      document.getElementById("proj1-link").textContent = t.proj1Link;
-
-      document.getElementById("proj2-title").textContent = t.proj2Title;
-      document.getElementById("proj2-desc").textContent = t.proj2Desc;
-      document.getElementById("proj2-link").textContent = t.proj2Link;
-
-      document.getElementById("desc-contacto-text").textContent = t.descContacto;
-      // Los botones de contacto tienen íconos + texto, para mantenerlos, los actualizamos aquí
-      document.getElementById("contact-discord").childNodes[2].nodeValue = " " + t.contactDiscord;
-      document.getElementById("contact-tiktok").childNodes[2].nodeValue = " " + t.contactTikTok;
-
-      document.getElementById("footer-text").textContent = t.footerText;
-
-      // Cambiar bandera
-      document.getElementById("flag-image").src = flagURLs[lang];
-      document.getElementById("flag-image").alt = lang === "es" ? "Bandera de Colombia" : "Flag of the United States";
+    function agregarAlCarrito(id) {
+      const producto = productos.find(p => p.id === id);
+      carrito.push(producto);
+      actualizarCarrito();
     }
 
-    languageSelect.addEventListener("change", (e) => {
-      cambiarIdioma(e.target.value);
-    });
+    function actualizarCarrito() {
+      carritoLista.innerHTML = "";
+      let total = 0;
+      carrito.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = `${p.nombre} - $${p.precio}`;
+        carritoLista.appendChild(li);
+        total += p.precio;
+      });
+      carritoTotal.textContent = total;
+      contador.textContent = carrito.length;
+    }
 
-    // Inicializar con el idioma seleccionado (español por defecto)
-    cambiarIdioma(languageSelect.value);
+    function vaciarCarrito() {
+      carrito = [];
+      actualizarCarrito();
+    }
+
+    verCarrito.onclick = () => {
+      carritoDiv.classList.toggle("oculto");
+    };
+
+    renderProductos();
   </script>
 </body>
 </html>
