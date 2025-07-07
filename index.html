@@ -3,92 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tienda Fácil</title>
+  <title>Tienda Oficial del Servidor</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f2f2f2;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #333;
     }
 
     header {
-      background: #008080;
+      background-color: #0e4d4d;
       color: white;
-      padding: 1em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    #ver-carrito {
+      background-color: #f39c12;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      float: right;
+      margin-top: -50px;
+      margin-right: 20px;
     }
 
     main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1em;
-      padding: 1em;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
 
     .producto {
       background: white;
-      padding: 1em;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
     }
 
     .producto img {
-      width: 100%;
-      height: auto;
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .producto button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      background-color: #0e4d4d;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .producto button:hover {
+      background-color: #0a3c3c;
     }
 
     #carrito {
       background: white;
-      padding: 1em;
-      margin: 1em;
-      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .oculto {
       display: none;
     }
 
-    button {
-      background-color: #008080;
+    #pagar-btn {
+      background-color: #28a745;
       color: white;
       border: none;
-      padding: 0.5em 1em;
+      padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
-      border-radius: 4px;
-      margin-top: 0.5em;
+      font-size: 16px;
+      margin-top: 10px;
     }
 
-    button:hover {
-      background-color: #006666;
+    #pagar-btn:hover {
+      background-color: #218838;
+    }
+
+    ul {
+      padding-left: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Tienda Fácil</h1>
+    Tienda Oficial del Servidor
     <button id="ver-carrito">🛒 Ver Carrito (<span id="contador">0</span>)</button>
   </header>
 
   <main id="productos-container">
-    <!-- Aquí se cargan los productos -->
+    <!-- Productos cargan aquí -->
   </main>
 
   <div id="carrito" class="oculto">
-    <h2>Tu Carrito</h2>
+    <h2>🧺 Tu Carrito</h2>
     <ul id="carrito-lista"></ul>
-    <p>Total: $<span id="carrito-total">0</span></p>
+    <p><strong>Total:</strong> $<span id="carrito-total">0</span></p>
     <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button id="pagar-btn" onclick="pagarAhora()">💰 Pagar Ahora</button>
   </div>
 
   <script>
     const productos = [
-      { id: 1, nombre: "Camiseta", precio: 25000, imagen: "https://via.placeholder.com/150" },
-      { id: 2, nombre: "Gorra", precio: 15000, imagen: "https://via.placeholder.com/150" },
-      { id: 3, nombre: "Zapatos", precio: 90000, imagen: "https://via.placeholder.com/150" },
+      { id: 1, nombre: "Rango VIP", precio: 25000, imagen: "https://via.placeholder.com/200x150?text=Rango+VIP" },
+      { id: 2, nombre: "Llaves de Cofre", precio: 10000, imagen: "https://via.placeholder.com/200x150?text=Llaves" },
+      { id: 3, nombre: "Tag Personalizado", precio: 15000, imagen: "https://via.placeholder.com/200x150?text=Tag" },
     ];
 
     const contenedor = document.getElementById("productos-container");
@@ -107,7 +150,7 @@
         div.innerHTML = `
           <img src="${producto.imagen}" alt="${producto.nombre}">
           <h3>${producto.nombre}</h3>
-          <p>$${producto.precio}</p>
+          <p><strong>$${producto.precio}</strong></p>
           <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
         `;
         contenedor.appendChild(div);
@@ -141,6 +184,15 @@
     verCarrito.onclick = () => {
       carritoDiv.classList.toggle("oculto");
     };
+
+    function pagarAhora() {
+      if (carrito.length === 0) {
+        alert("El carrito está vacío, añade productos primero.");
+        return;
+      }
+      alert("¡Gracias por tu compra! Pronto recibirás tus ítems en el servidor.");
+      vaciarCarrito();
+    }
 
     renderProductos();
   </script>
