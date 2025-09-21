@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destras | Portafolio</title>
+  <title>NeoBox | Portafolio</title>
   <style>
     /* Reset */
     *, *::before, *::after { box-sizing: border-box; }
@@ -13,16 +13,13 @@
       background-color: #121212;
       color: #e0e0e0;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Loader pantalla completa */
+    /* Loader mejorado */
     #loader {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #121212;
+      inset: 0;
+      background: #0a0a0a;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -30,35 +27,44 @@
       z-index: 2000;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
-    #loader.hidden {
-      opacity: 0;
-      visibility: hidden;
+    #loader.hidden { opacity: 0; visibility: hidden; }
+
+    #loader img {
+      width: 120px;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
     }
     #loader h2 {
-      color: #c0392b;
+      color: #fff;
       font-size: 1.6rem;
       margin-bottom: 20px;
-      letter-spacing: 1px;
       animation: pulseText 1.5s infinite;
     }
     @keyframes pulseText {
       0%,100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
     .loading-bar {
-      width: 240px;
-      height: 12px;
-      border-radius: 8px;
-      background: #2c2f33;
+      width: 260px;
+      height: 14px;
+      border-radius: 10px;
+      background: #222;
       overflow: hidden;
-      box-shadow: 0 0 12px rgba(192,57,43,0.5);
+      box-shadow: 0 0 12px rgba(0,153,102,0.4);
+      margin-bottom: 10px;
     }
     .loading-bar span {
       display: block;
       height: 100%;
       width: 0;
-      background: linear-gradient(90deg, #c0392b, #e74c3c);
-      animation: loadAnim 3s ease-in-out forwards;
+      background: linear-gradient(90deg, #009966, #00cc88);
+      animation: loadAnim 2.8s ease-in-out forwards;
     }
     @keyframes loadAnim {
       0% { width: 0; }
@@ -66,52 +72,67 @@
       100% { width: 100%; }
     }
 
-    /* Header fijo */
+    .loader-tip {
+      margin-top: 12px;
+      color: #bbb;
+      font-size: 0.9rem;
+      font-style: italic;
+      animation: pulseText 2s infinite;
+    }
+
+    /* Header */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: #1f1f1f;
+      background: rgba(31,31,31,0.95);
       border-bottom: 1px solid #3a3a3a;
-      padding: 20px 40px;
+      padding: 15px 30px;
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
     }
-    header.scrolled { background-color: #121212; box-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    header.scrolled {
+      background-color: #121212;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: #c0392b;
+      color: #009966;
       letter-spacing: 2px;
       margin: 0;
     }
 
-    /* Contenedor principal */
-    main { max-width: 900px; margin: 100px auto 60px; padding: 0 20px; }
+    /* Main */
+    main {
+      max-width: 1000px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
+    }
     section {
       background-color: #1f1f1f;
       border-radius: 12px;
       padding: 30px 35px;
       margin-bottom: 50px;
-      box-shadow: 0 0 20px rgba(192, 57, 43, 0.3);
+      box-shadow: 0 0 20px rgba(0, 153, 102, 0.2);
       transition: box-shadow 0.3s ease;
     }
-    section:hover { box-shadow: 0 0 30px rgba(192, 57, 43, 0.6); }
+    section:hover {
+      box-shadow: 0 0 30px rgba(0, 153, 102, 0.5);
+    }
     h2 {
-      color: #c0392b;
+      color: #009966;
       font-weight: 700;
       font-size: 1.9rem;
       margin-bottom: 18px;
-      border-bottom: 3px solid #c0392b;
+      border-bottom: 3px solid #009966;
       padding-bottom: 6px;
-      user-select: none;
     }
     p { font-size: 1.1rem; color: #ddd; }
 
-    /* Botones Discord oscuros */
+    /* Botón */
     .discord-btn {
       display: inline-flex;
       align-items: center;
@@ -125,54 +146,13 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
       transition: all 0.3s ease;
       margin-top: 15px;
-      user-select: none;
       border: 1px solid #444;
     }
     .discord-btn:hover {
       background: linear-gradient(145deg, #2c2f33, #36393f);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.8), 0 0 10px rgba(114,137,218,0.5);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.8), 0 0 10px rgba(0,153,102,0.5);
       transform: translateY(-3px) scale(1.03);
     }
-    .discord-btn:active {
-      transform: translateY(0) scale(0.98);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-    }
-    .discord-btn svg {
-      margin-right: 12px;
-      width: 24px;
-      height: 24px;
-      filter: drop-shadow(0 0 2px rgba(0,0,0,0.6));
-    }
-
-    /* Proyectos y experiencia */
-    ul.proyectos-lista {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 28px;
-      padding: 0;
-      margin: 0;
-    }
-    ul.proyectos-lista li {
-      background-color: #292929;
-      border-radius: 10px;
-      padding: 22px 26px;
-      box-shadow: 0 0 15px rgba(192, 57, 43, 0.3);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-    ul.proyectos-lista li:hover {
-      background-color: #3d1f1f;
-      box-shadow: 0 0 25px rgba(192, 57, 43, 0.55);
-    }
-    ul.proyectos-lista li h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.25rem;
-      color: #c0392b;
-      font-weight: 700;
-    }
-    ul.proyectos-lista li p { color: #ccc; font-size: 1rem; line-height: 1.4; }
 
     /* Footer */
     footer {
@@ -181,17 +161,19 @@
       padding: 18px 10px;
       color: #666;
       border-top: 1px solid #3a3a3a;
-      user-select: none;
       font-size: 0.9rem;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
-      main { margin: 120px 15px 60px; padding: 0; }
-      header { padding: 15px 20px; }
+    @media (max-width: 768px) {
       header h1 { font-size: 1.5rem; }
-      .discord-btn { font-size: 1rem; padding: 12px 24px; }
-      ul.proyectos-lista { grid-template-columns: 1fr; gap: 20px; }
+      main { margin: 120px 10px 60px; }
+      .discord-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 12px;
+      }
     }
   </style>
 </head>
@@ -199,8 +181,9 @@
 
 <!-- Loader -->
 <div id="loader">
-  <h2>Cargando Portafolio de Destras...</h2>
+  <h2>Cargando mi Portafolio...</h2>
   <div class="loading-bar"><span></span></div>
+  <p class="loader-tip">💡 Consejo: Únete a mi servidor para vivir la mejor experiencia Minecraft</p>
 </div>
 
 <header id="header">
@@ -212,8 +195,8 @@
     <h2>Sobre mí</h2>
     <p>
       Soy <strong>Destras</strong>, llevo más de <strong>2 años configurando servidores de Minecraft</strong>.  
-      Me especializo en el área de <strong>configuración y optimización</strong>, adaptándome siempre a la visión de cada proyecto.  
-      Mi objetivo es <em>ganar experiencia, aportar profesionalismo y dejar una huella especial en cada servidor en el que participo</em>.
+      Me especializo en <strong>configuración y optimización</strong>, adaptándome siempre a la visión de cada proyecto.  
+      Mi objetivo es <em>aportar profesionalismo y dejar huella en cada servidor</em>.
     </p>
   </section>
 
@@ -226,33 +209,28 @@
       </li>
       <li>
         <h3>Optimización</h3>
-        <p>Reducción de lag, ajustes en <strong>plugins</strong> y <strong>configuración de rendimiento</strong> para servidores con gran cantidad de jugadores.</p>
+        <p>Reducción de lag, ajustes en <strong>plugins</strong> y <strong>rendimiento</strong> para servidores grandes.</p>
       </li>
       <li>
         <h3>Trabajo en Equipo</h3>
-        <p>Colaboración con <strong>staffs y dueños de servidores</strong> para plasmar sus ideas y mejorar la experiencia de la comunidad.</p>
+        <p>Colaboración con <strong>staffs y dueños</strong> para mejorar la experiencia de la comunidad.</p>
       </li>
     </ul>
   </section>
 
-  <!-- Nueva sección de confianza -->
   <section id="confianza">
     <h2>Confiable y Responsable</h2>
     <p>
-      Mi prioridad es generar confianza en cada proyecto que desarrollo. Siempre cumplo con los plazos acordados, mantengo una comunicación clara y transparente, y me aseguro de que cada servidor o proyecto funcione de manera óptima antes de entregarlo.  
-      Puedes contar conmigo para <strong>trabajar de manera profesional y segura</strong> en cualquier proyecto relacionado con Minecraft.
+      Siempre cumplo plazos acordados, mantengo comunicación clara y me aseguro de que todo funcione antes de entregar.  
+      Puedes contar conmigo para <strong>trabajar profesionalmente</strong> en cualquier proyecto de Minecraft.
     </p>
   </section>
 
   <section id="discord">
-    <h2>Únete a mi servidor de Discord Ivonia Network</h2>
-    <p>Si quieres formar parte de la comunidad, enterarte de novedades o charlar conmigo, aquí tienes el Discord oficial de Ivonia Network.</p>
-    <a href="https://discord.gg/4q68z4r9J5" target="_blank" rel="noopener noreferrer" class="discord-btn" aria-label="Unirse al Discord Ivonia Network">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240" fill="white" aria-hidden="true" focusable="false">
-        <path d="M104.4 104.6c-5.7 0-10.3 5-10.3 11.2 0 6.2 4.6 11.2 10.3 11.2 5.7 0 10.3-5 10.3-11.2 0-6.2-4.6-11.2-10.3-11.2zm36.2 0c-5.7 0-10.3 5-10.3 11.2 0 6.2 4.6 11.2 10.3 11.2 5.7 0 10.3-5 10.3-11.2 0-6.2-4.6-11.2-10.3-11.2z"/>
-        <path d="M189.5 20h-134A27.5 27.5 0 0028 47.5v128A27.5 27.5 0 0055.5 203h102.5l-4.8-16.8 11.4 10.6 10.7 9.9 19 16V47.5A27.5 27.5 0 00189.5 20zm-49.4 132.2s-4.6-5.5-8.4-10.4c16.7-4.8 23-15.3 23-15.3-5.2 3.5-10.2 6-14.6 7.7-6.3 2.7-12.4 4.5-18.3 5.4-12 2.2-22.9 1.7-32.7-.1-7.2-1.4-13.3-3.6-18.1-6.1-0.8-0.4-1.7-0.8-2.6-1.2-0.1-0.1-0.3-0.1-0.4-0.2-0.2-0.1-0.3-0.2-0.4-0.3-3-1.4-4.6-2.3-4.6-2.3s6 10 21.7 15.3c-3.8 4.8-8.5 10.5-8.5 10.5-28.2-0.9-38.9-19.4-38.9-19.4 0-41.1 18.4-74.4 18.4-74.4 18.4-13.7 35.8-13.3 35.8-13.3l1.3 1.5c-22.9 6.5-33.5 16.3-33.5 16.3s2.8-1.6 7.5-3.9c13.6-6.4 24.4-8.1 28.9-8.6 0.7-0.1 1.3-0.2 2-0.3 7.5-1 16.1-0.1 25 3.8 0 0-10.2-9.6-32.4-15.6l1.8-2.1s17.3-0.4 35.7 13.3c0 0 18.3 33.3 18.3 74.4 0 0-10.8 18.5-39 19.4z"/>
-      </svg>
-      Unirme a Ivonia Network
+    <h2>Únete a mi servidor de Discord NeoBox</h2>
+    <p>Forma parte de la comunidad, entérate de novedades o charlemos.</p>
+    <a href="https://discord.gg/4q68z4r9J5" target="_blank" class="discord-btn">
+      Unirme a NeoBox
     </a>
   </section>
 
@@ -261,18 +239,14 @@
     <ul class="proyectos-lista">
       <li>
         <h3>GalardonesMC Survival 1.21.7</h3>
-        <p>Servidor con economía, protecciones y eventos. Mi trabajo: configuración de <strong>plugins esenciales</strong> y balance de sistemas.</p>
-        <a href="https://discord.gg/QFf4HMsAqj" target="_blank" rel="noopener noreferrer" class="discord-btn">
-          Entra al servidor
-        </a>
+        <p>Servidor con economía, protecciones y eventos. Configuración de <strong>plugins esenciales</strong>.</p>
+        <a href="https://discord.gg/QFf4HMsAqj" target="_blank" class="discord-btn">Entra al servidor</a>
       </li>
       <li>
         <h3>Próximos proyectos</h3>
-        <p>Actualmente preparando nuevas configuraciones para futuros servidores.  
+        <p>Preparando nuevas configuraciones.  
         Siempre abierto a <strong>colaboraciones</strong>.</p>
-        <a href="espera.html" target="_blank" rel="noopener noreferrer" class="discord-btn">
-          Haz click en mí
-        </a>
+        <a href="espera.html" target="_blank" class="discord-btn">Haz click en mí</a>
       </li>
     </ul>
   </section>
@@ -283,21 +257,19 @@
 </footer>
 
 <script>
-  // Animación header scroll
+  // Header animado
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
-    if(window.scrollY > 30){ header.classList.add('scrolled'); } 
-    else { header.classList.remove('scrolled'); }
+    header.classList.toggle('scrolled', window.scrollY > 30);
   });
 
   // Loader
   window.addEventListener("load", () => {
     setTimeout(() => {
       document.getElementById("loader").classList.add("hidden");
-    }, 1200); // ⏳ espera 1.2s extra para que la animación se aprecie
+    }, 1800);
   });
 </script>
 
 </body>
 </html>
-
