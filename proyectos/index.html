@@ -19,15 +19,36 @@
 </header>
 
 <main>
+  <!-- Proyectos Destacados -->
   <section>
     <h2>Proyectos Destacados</h2>
-    <article>
+
+    <article class="server-card">
+      <h3>GalardonMT</h3>
+      <p><strong>IP:</strong> <span id="server-ip">galardones.net</span></p>
+      <div class="server-actions">
+        <button onclick="copiarIP()">📋 Copiar IP</button>
+        <a href="https://discord.gg/4q68z4r9J5" target="_blank" class="btn-discord">💬 Discord</a>
+      </div>
+    </article>
+
+    <article class="server-card">
       <h3>Servidor Survival</h3>
       <p>Economía, rangos y eventos configurados de forma profesional.</p>
     </article>
-    <article>
+
+    <article class="server-card">
       <h3>Servidor PvP</h3>
       <p>Optimizaciones y sistemas de combate personalizados.</p>
+    </article>
+  </section>
+
+  <!-- En espera -->
+  <section>
+    <h2>En espera</h2>
+    <article class="server-card">
+      <h3>Servidor Skyblock</h3>
+      <p>Próximamente disponible.</p>
     </article>
   </section>
 </main>
@@ -35,5 +56,14 @@
 <footer>
   <p>© 2025 Destras</p>
 </footer>
+
+<script>
+  function copiarIP() {
+    const ip = document.getElementById("server-ip").textContent;
+    navigator.clipboard.writeText(ip).then(() => {
+      alert("IP copiada: " + ip);
+    });
+  }
+</script>
 </body>
 </html>
