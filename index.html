@@ -10,14 +10,13 @@
 
 <!-- Loader -->
 <div id="loader">
-  <h2>Cargando mi Portafolio...</h2>
+  <h2>Cargando...</h2>
   <div class="loading-bar"><span></span></div>
-  <p class="loader-tip">💡 Consejo: Respeta siempre la privacidad de los usuarios</p>
 </div>
 
-<!-- Header con Navbar -->
+<!-- Header con menú -->
 <header id="header">
-  <h1>Destras</h1>
+  <div class="logo">Destras</div>
   <nav>
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
@@ -30,22 +29,53 @@
 </header>
 
 <main>
-  <!-- Secciones como en tu código actual -->
+  <!-- Hero / Presentación inicial -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hola, soy <span>Destras</span></h1>
+      <p>
+        Me dedico a crear, configurar y optimizar <strong>servidores Minecraft</strong>, además de trabajar en proyectos de <strong>tecnología y desarrollo web</strong>.  
+        Mi objetivo es ofrecer soluciones prácticas, estables y profesionales.
+      </p>
+      <a href="#servicios" class="btn">Ver más</a>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
   <section id="sobre-mi">
     <h2>Sobre mí</h2>
-    <p>Soy <strong>Destras</strong>, especializado en servidores Minecraft y desarrollo web.</p>
+    <p>
+      Soy un apasionado de la tecnología con experiencia en servidores de <strong>Minecraft</strong>, 
+      bots de <strong>Discord</strong> y desarrollo de sistemas personalizados.  
+      Me gusta combinar creatividad con organización para lograr resultados que realmente marquen diferencia.
+    </p>
   </section>
 
+  <!-- Servicios -->
   <section id="servicios">
     <h2>Servicios</h2>
-    <p>Ofrezco configuración profesional de servidores, optimización y sistemas personalizados.</p>
-    <a href="servicios/" class="discord-btn">Ver Servicios</a>
+    <p>Estos son algunos de los servicios que ofrezco:</p>
+    <ul class="servicios-lista">
+      <li>Configuración y optimización de servidores Minecraft</li>
+      <li>Creación de plugins y sistemas personalizados</li>
+      <li>Bots de Discord a medida</li>
+      <li>Desarrollo web básico</li>
+    </ul>
+    <a href="servicios/" class="btn">Ver Servicios</a>
   </section>
 
+  <!-- Proyectos -->
   <section id="proyectos">
     <h2>Proyectos</h2>
-    <p>Consulta mis proyectos destacados y en desarrollo.</p>
-    <a href="proyectos/" class="discord-btn">Ver Proyectos</a>
+    <p>Aquí puedes ver algunos de mis proyectos recientes:</p>
+    <a href="proyectos/" class="btn">Ver Proyectos</a>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Quieres trabajar conmigo o tienes una idea en mente?</p>
+    <p>Envíame un mensaje directo en <a href="https://discord.gg/4q68z4r9J5" target="_blank">Discord</a>.</p>
   </section>
 </main>
 
