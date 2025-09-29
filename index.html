@@ -1,84 +1,147 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Destras | Portafolio</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Destras">
+    <title>Destras</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo para el anuncio oscuro */
+        .announcement {
+            background: linear-gradient(90deg, #2c2c2c, #1a1a1a);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+            border-radius: 8px;
+            margin: 10px auto;
+            max-width: 1000px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 
+<header>
+    <div class="header-background"></div>
 
-<!-- Header con menú -->
-<header id="header">
-  <div class="logo">Destras</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="servicios/">Servicios</a></li>
-      <li><a href="proyectos/">Proyectos</a></li>
-      <li><a href="privacidad/">Privacidad</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+    <!-- MENÚ DE MÚSICA -->
+    <div class="music-player">
+        <div class="player-info">La Buena Fai - Feid</div>
+        <div class="player-controls">
+            <button onclick="toggleMusic()">⏯</button>
+            <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
+        </div>
+        <div class="player-message" id="playerMessage">¡Bienvenido! Música activada.</div>
+    </div>
+
+    <div class="container header-content">
+        <div class="header-text">
+            <h1>Destras  // (ET)</h1>
+            <p>
+                Tengo 16 años y llevo 3 años configurando servidores Minecraft.  
+                Cada día aprendo más para ofrecerte las mejores soluciones, optimizaciones  
+                y experiencias en tus mundos de juego.  
+                Mi meta: hacer que tu servidor funcione perfecto, seguro y único.
+            </p>
+            <div class="buttons">
+                <a href="https://discord.destras.us" target="_blank" class="btn" onclick="playClick()">Entra a mi Discord</a>
+                <a href="https://discord.com/users/1308284651516723263" class="btn btn-secondary" onclick="playClick()">Contactarme</a>
+            </div>
+        </div>
+        <div class="header-skin">
+            <img src="destras.png" alt="Skin de Destras">
+        </div>
+    </div>
 </header>
 
-<main>
-  <!-- Hero / Presentación inicial -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Hola, soy <span>Destras</span></h1>
-      <p>
-        Me dedico a crear, configurar y optimizar <strong>servidores Minecraft</strong>, además de trabajar en proyectos de <strong>tecnología y desarrollo web</strong>.  
-        Mi objetivo es ofrecer soluciones prácticas, estables y profesionales.
-      </p>
-      <a href="#servicios" class="btn">Ver más</a>
+<!-- ANUNCIO -->
+<div class="announcement">
+    Atención: ¡La web está siendo mejorada constantemente para darte la mejor experiencia!
+</div>
+
+<section class="about fade-in">
+    <div class="container">
+        <h2>Sobre mí</h2>
+        <p>
+            Soy colombiano, tengo 16 años, aprendiendo cada día más sobre configuraciones en  
+            servidores de Minecraft y bots de Discord.  
+            Me apasiona explorar cosas nuevas y mejorar mis habilidades.  
+            Me considero una persona bromista 😄, pero también seria en las ocasiones que lo requieran.  
+            Siempre busco que lo que haga sea con calidad y pasión.
+        </p>
     </div>
-  </section>
+</section>
 
-  <!-- Sobre mí -->
-  <section id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy un apasionado de la tecnología con experiencia en servidores de <strong>Minecraft</strong>, 
-      bots de <strong>Discord</strong> y desarrollo de sistemas personalizados.  
-      Me gusta combinar creatividad con organización para lograr resultados que realmente marquen diferencia.
-    </p>
-  </section>
+<section class="services fade-in">
+    <div class="container">
+        <h2>General</h2>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Configuración de Servidores</h3>
+                <p>Instalación, optimización y mantenimiento profesional de servidores Minecraft.</p>
+            </div>
+            <div class="card">
+                <h3>Asesoría Personalizada</h3>
+                <p>Guías, soporte técnico y soluciones hechas a medida para tu servidor.</p>
+            </div>
+            <div class="card">
+                <h3>Plugins</h3>
+                <p>Instalación y configuración de plugins exclusivos para tu servidor.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-  <!-- Servicios -->
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <p>Estos son algunos de los servicios que ofrezco:</p>
-    <ul class="servicios-lista">
-      <li>Configuración y optimización de servidores Minecraft</li>
-      <li>Bots de Discord a medida</li>
-    </ul>
-    <a href="servicios/" class="btn">Ver Servicios</a>
-  </section>
-
-  <!-- Proyectos -->
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <p>Aquí puedes ver algunos de mis proyectos recientes:</p>
-    <a href="proyectos/" class="btn">Ver Proyectos</a>
-  </section>
-
-  <!-- Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>¿Quieres trabajar conmigo o tienes una idea en mente? agregame en discord <span>(destrass)</span></p>
-  </section>
-</main>
-
-<footer>
-  <p>© 2025 Destras - Todos los derechos reservados</p>
-  <p><a href="privacidad/">Política de Privacidad</a></p>
+<footer class="fade-in">
+    <div class="container">
+        <p>© 2025 Destras • Todos los derechos reservados</p>
+    </div>
 </footer>
 
-<script src="js/main.js"></script>
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="backgroundMusic" src="musica.mp3" loop autoplay></audio>
+
+<script>
+    const music = document.getElementById("backgroundMusic");
+    const playerMessage = document.getElementById("playerMessage");
+
+    function playClick() {
+        document.getElementById('clickSound').play();
+    }
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            showMessage("🎵 Música activada");
+        } else {
+            music.pause();
+            showMessage("⏸ Música pausada");
+        }
+    }
+
+    function setVolume(value) {
+        music.volume = value;
+        showMessage("🔊 Volumen ajustado: " + Math.round(value * 100) + "%");
+    }
+
+    function showMessage(text) {
+        playerMessage.textContent = text;
+        playerMessage.classList.add("show");
+        setTimeout(() => {
+            playerMessage.classList.remove("show");
+        }, 2000);
+    }
+</script>
+
 </body>
 </html>
-
-
-
