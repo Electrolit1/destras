@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #121212;
+  background: #121212; /* Fondo oscuro estilo Discord */
   color: #e0e0e0;
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -39,7 +39,7 @@ body {
   display: block;
   height: 100%;
   width: 0;
-  background: #00cc88;
+  background: #5865f2; /* Azul Discord */
   animation: loadAnim 2s forwards;
 }
 @keyframes loadAnim { to { width: 100%; } }
@@ -59,7 +59,7 @@ header {
 }
 
 header .logo {
-  color: #00cc88;
+  color: #5865f2; /* Azul Discord */
   font-size: 1.8rem;
   font-weight: bold;
 }
@@ -77,7 +77,7 @@ header .logo {
   transition: color .3s;
 }
 .nav-links a:hover {
-  color: #00cc88;
+  color: #5865f2;
 }
 
 /* Hero */
@@ -96,7 +96,7 @@ header .logo {
   margin-bottom: 15px;
 }
 .hero-content h1 span {
-  color: #00cc88;
+  color: #5865f2;
 }
 .hero-content p {
   font-size: 1.1rem;
@@ -117,13 +117,14 @@ section {
   background: #1f1f1f;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,.3);
-  transition: transform .3s;
+  transition: transform .3s, background .3s;
 }
 section:hover {
   transform: translateY(-4px);
+  background: #272727;
 }
 h2 {
-  color: #00cc88;
+  color: #5865f2;
   margin-bottom: 12px;
   font-size: 1.6rem;
 }
@@ -142,14 +143,14 @@ h2 {
   content: "▹";
   position: absolute;
   left: 0;
-  color: #00cc88;
+  color: #5865f2;
 }
 
 /* Botones */
 .btn {
   display: inline-block;
-  background: #00cc88;
-  color: #121212;
+  background: #5865f2;
+  color: #fff;
   padding: 10px 22px;
   border-radius: 8px;
   font-weight: bold;
@@ -157,9 +158,9 @@ h2 {
   transition: background .3s, transform .3s, box-shadow .3s;
 }
 .btn:hover {
-  background: #009966;
+  background: #4752c4;
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 204, 136, .3);
+  box-shadow: 0 4px 12px rgba(88,101,242,.3);
 }
 
 /* Footer */
@@ -171,7 +172,7 @@ footer {
   font-size: 0.9rem;
 }
 footer a {
-  color: #00cc88;
+  color: #5865f2;
   text-decoration: none;
 }
 footer a:hover {
@@ -193,83 +194,4 @@ footer a:hover {
   .hero-content h1 {
     font-size: 2rem;
   }
-}
-
-/* === Añadido para sección GalardonMT y En espera === */
-
-/* Cards de Servidor */
-.server-card {
-  background: linear-gradient(145deg, #1a1a1a, #1f1f1f);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.3);
-  transition: transform .3s, box-shadow .3s, background .3s;
-}
-
-.server-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,.4);
-  background: linear-gradient(145deg, #1f1f1f, #242424);
-}
-
-.server-card h3 {
-  color: #00cc88;
-  margin-bottom: 10px;
-}
-
-.server-card p {
-  color: #cfcfcf;
-  margin-bottom: 10px;
-}
-
-/* Botones de servidor */
-.server-actions {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
-}
-
-.server-actions button,
-.server-actions .btn-discord {
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background .3s, transform .2s, box-shadow .3s;
-}
-
-.server-actions button {
-  background: #00cc88;
-  color: #121212;
-}
-.server-actions button:hover {
-  background: #009966;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,204,136,.3);
-}
-
-.btn-discord {
-  background: #5865f2;
-  color: #fff;
-}
-.btn-discord:hover {
-  background: #4752c4;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(88,101,242,.3);
-}
-
-/* Sección En espera */
-#en-espera article {
-  background: #2a2a2a;
-  padding: 18px;
-  border-radius: 10px;
-  border: 1px dashed #555;
-  color: #ccc;
-}
-
-#en-espera h3 {
-  color: #ffcc00;
 }
