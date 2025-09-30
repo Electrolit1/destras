@@ -118,6 +118,18 @@ header::before {
     transform: translateY(0px);
 }
 
+/* Botón de alternar en móviles */
+.toggle-player {
+    display: none;
+    background: #222;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
 /* HEADER TEXTOS */
 .header-text {
     color: white;
@@ -261,6 +273,11 @@ footer {
     .header-skin {
         margin-top: 20px;
     }
+    .music-player {
+        position: static;
+        width: 90%;
+        margin: 10px auto;
+    }
 }
 
 /* ===== Celulares ===== */
@@ -307,20 +324,36 @@ footer {
         text-align: center;
     }
 
-    /* 👇 En móvil el reproductor se va abajo */
+    /* 🎵 Player abajo en móvil */
     .music-player {
         position: fixed;
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 95%;
-        font-size: 12px;
-        padding: 6px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        width: auto;
+        padding: 8px 14px;
+        border-radius: 25px;
         flex-direction: row;
+        align-items: center;
         gap: 10px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.7);
+        font-size: 12px;
+    }
+
+    .music-player .player-controls {
+        display: none;
+    }
+
+    .music-player.active .player-controls {
+        display: flex;
+    }
+
+    .toggle-player {
+        display: block;
+    }
+
+    .player-info {
+        display: none;
     }
 
     .service-cards {
