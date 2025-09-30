@@ -31,6 +31,7 @@ header {
     height: 100%;
     background: url('fondo-colombia.jpg') center center / cover no-repeat;
     filter: brightness(0.4);
+    object-fit: cover;
     z-index: 0;
 }
 
@@ -118,7 +119,6 @@ header::before {
     transform: translateY(0px);
 }
 
-/* Botón de alternar en móviles */
 .toggle-player {
     display: none;
     background: #222;
@@ -165,6 +165,7 @@ header::before {
     width: 100%;
     border-radius: 20px;
     box-shadow: 0px 8px 25px rgba(0,0,0,0.7);
+    background: transparent;
 }
 
 @keyframes float {
@@ -288,7 +289,7 @@ footer {
     }
 
     header {
-        height: auto;
+        height: auto; /* 🔥 ahora se ajusta al contenido */
         padding: 20px 0;
     }
 
@@ -307,8 +308,13 @@ footer {
         text-align: center;
     }
 
+    .header-skin {
+        max-width: 180px; /* 🔥 más pequeña en móvil */
+    }
+
     .header-skin img {
-        width: 120px;
+        width: 100%;
+        background: transparent; /* 🔥 evita fondo negro */
     }
 
     .buttons {
