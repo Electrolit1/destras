@@ -324,39 +324,9 @@ footer {
         text-align: center;
     }
 
-    /* Player simplificado en móvil */
+    /* Ocultar menú de música y mostrar solo botón en móvil */
     .music-player {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 8px;
-        border-radius: 50%;
-        background: rgba(20, 20, 20, 0.85);
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.7);
-        font-size: 0;
-        z-index: 1000;
-    }
-
-    .music-player .player-info,
-    .music-player .player-controls,
-    .player-message {
-        display: none;
-    }
-
-    .music-player button {
-        display: block;
-        font-size: 20px;
-        padding: 10px;
-        background: #1B1B1B;
-        border-radius: 50%;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-
-    .music-player button:hover {
-        background: #333333;
+        display: none !important;
     }
 
     .service-cards {
