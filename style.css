@@ -9,6 +9,8 @@ body {
     background: linear-gradient(135deg, #0D1117, #1B1F23);
     color: #E4E4E4;
     line-height: 1.6;
+    font-size: 18px;
+    padding: 20px;
 }
 
 /* HEADER */
@@ -54,7 +56,7 @@ header::before {
     flex-direction: row-reverse;
 }
 
-/* MENU DE MUSICA DENTRO DEL HEADER */
+/* MENU DE MUSICA */
 .music-player {
     position: absolute;
     top: 20px;
@@ -69,6 +71,7 @@ header::before {
     gap: 8px;
     z-index: 3;
     font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
 }
 
 .player-info {
@@ -135,7 +138,10 @@ header::before {
 }
 
 .header-text .buttons {
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .header-skin {
@@ -175,6 +181,7 @@ header::before {
     background: linear-gradient(45deg, #3A3A3A, #222222);
 }
 
+/* SECCIONES */
 section {
     padding: 50px 0;
 }
@@ -219,6 +226,7 @@ section {
     color: #CCCCCC;
 }
 
+/* FOOTER */
 footer {
     background: #111827;
     text-align: center;
@@ -227,6 +235,7 @@ footer {
     color: #9CA3AF;
 }
 
+/* ANIMACION */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -240,6 +249,7 @@ footer {
     }
 }
 
+/* ===== Tablets ===== */
 @media (max-width: 900px) {
     .header-content {
         flex-direction: column;
@@ -258,57 +268,70 @@ footer {
     }
 }
 
+/* ===== Celulares ===== */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.2rem;
+    body {
+        font-size: 14px;
+        padding: 8px;
     }
-    header p {
-        font-size: 1rem;
+
+    header {
+        height: auto;
+        padding: 20px 0;
     }
+
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-text p {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-skin img {
+        width: 120px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .btn, .btn-secondary {
+        font-size: 14px;
+        padding: 8px 12px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .music-player {
+        font-size: 12px;
+        padding: 6px 8px;
+        top: 5px;
+        right: 5px;
+    }
+
     .service-cards {
         flex-direction: column;
-        align-items: center;
+        gap: 12px;
     }
+
     .card {
-        width: 90%;
+        width: 95%;
+        padding: 12px;
+        font-size: 14px;
     }
-}
-.header-text .buttons {
-    margin-top: 30px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-/* Estilos generales (para PC) */
-body {
-  font-size: 18px;
-  padding: 20px;
-}
 
-/* Estilos especiales para celulares */
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  .header-content {
-    flex-direction: column; /* Pone texto arriba y skin abajo */
-    text-align: center;
-  }
-
-  .header-skin img {
-    width: 150px; /* Más pequeña en móvil */
-  }
-
-  .buttons {
-    flex-direction: column; /* Botones uno debajo del otro */
-    gap: 10px;
-  }
-
-  .music-player {
-    top: 10px;
-    right: 10px;
-    font-size: 14px; /* Más compacto */
-  }
+    footer {
+        font-size: 12px;
+        padding: 12px;
+    }
 }
