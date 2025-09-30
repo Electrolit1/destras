@@ -279,3 +279,36 @@ footer {
     gap: 20px;
     flex-wrap: wrap;
 }
+/* Estilos generales (para PC) */
+body {
+  font-size: 18px;
+  padding: 20px;
+}
+
+/* Estilos especiales para celulares */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .header-content {
+    flex-direction: column; /* Pone texto arriba y skin abajo */
+    text-align: center;
+  }
+
+  .header-skin img {
+    width: 150px; /* Más pequeña en móvil */
+  }
+
+  .buttons {
+    flex-direction: column; /* Botones uno debajo del otro */
+    gap: 10px;
+  }
+
+  .music-player {
+    top: 10px;
+    right: 10px;
+    font-size: 14px; /* Más compacto */
+  }
+}
