@@ -9,26 +9,6 @@
     <link rel="icon" type="image/png" href="logo.png">
 
     <style>
-        .announcement {
-            background: linear-gradient(90deg, #ff0000, #8b0000);
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            animation: pulse 2s infinite;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 1000px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.02); opacity: 0.9; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
         .btn {
             display: inline-block;
             background-color: #5865F2;
@@ -56,6 +36,48 @@
             font-size: 1rem;
             margin-top: 10px;
         }
+
+        /* --- NUEVO: Sección compacta y responsiva --- */
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header-text h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .header-skin img {
+            max-width: 160px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+
+            .header-skin img {
+                max-width: 130px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -75,20 +97,13 @@
     <div class="container header-content">
         <div class="header-text">
             <h1>Destras</h1>
-            </p>
-            <div class="buttons">
-                <a href="https://discord.com/users/1308284651516723263" class="btn btn-secondary" onclick="playClick()">Perfil</a>
-            </div>
+            <a href="https://discord.com/users/1308284651516723263" class="btn" onclick="playClick()">Perfil</a>
         </div>
         <div class="header-skin">
             <img src="destras.png" alt="Skin de Destras">
         </div>
     </div>
 </header>
-
-<div class="announcement">
-    🕒 Me encuentro en pausa indefinida — No se aceptan proyectos ni servicios por el momento.
-</div>
 
 <section class="about fade-in">
     <div class="container">
@@ -146,8 +161,3 @@
 
 </body>
 </html>
-
-
-
-
-
