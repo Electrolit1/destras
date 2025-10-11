@@ -1,176 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Destras">
-    <title>Destras</title>
-    <link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destras</title>
+<style>
+    /* Fondo animado */
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        background-size: 300% 300%;
+        animation: fondoMovimiento 10s ease infinite;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background-color: #0e0e0e;
-            color: #fff;
-            text-align: center;
-        }
+    @keyframes fondoMovimiento {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-        .music-player {
-            margin-top: 20px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            padding: 15px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-        }
+    /* Mensaje principal */
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: brillo 3s infinite alternate;
+    }
 
-        .player-info {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    @keyframes brillo {
+        0% { opacity: 0.8; }
+        100% { opacity: 1; }
+    }
 
-        .player-controls button {
-            background: #5865F2;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+    p {
+        font-size: 1.2em;
+        color: #e0e0e0;
+        margin-bottom: 30px;
+        max-width: 500px;
+    }
 
-        .player-controls button:hover {
-            background: #4752C4;
-        }
+    /* Botón de perfil */
+    .perfil-btn {
+        background: linear-gradient(90deg, #0072ff, #00c6ff);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    }
 
-        .player-controls input[type="range"] {
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-
-        .player-message {
-            margin-top: 8px;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #5865F2;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            background-color: #4752C4;
-        }
-
-        section {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #1b1b1b;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        footer {
-            margin: 40px 0 20px;
-            color: #777;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            section {
-                margin: 25px 15px;
-                padding: 20px;
-            }
-
-            .music-player {
-                width: 85%;
-            }
-        }
-    </style>
+    .perfil-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+    }
+</style>
 </head>
 <body>
-
-    <div class="music-player">
-        <div class="player-info">🎵 La Buena Fai - Feid</div>
-        <div class="player-controls">
-            <button onclick="toggleMusic()">⏯</button>
-            <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
-        </div>
-        <div class="player-message" id="playerMessage">Música activada.</div>
-    </div>
-
-    <h1>Destras</h1>
-    <a href="https://discord.com/users/1308284651516723263" class="btn" onclick="playClick()">Perfil</a>
-
-    <section>
-        <h2>Un mensaje personal</h2>
-        <p>
-            A lo largo de los últimos años he aprendido mucho configurando servidores de Minecraft  
-            y creando sistemas para distintos proyectos.  
-            Sin embargo, por motivos personales y para tomar un respiro, he decidido detener mis servicios  
-            por un tiempo indefinido.  
-            Agradezco el apoyo, confianza y buenas experiencias compartidas con todos  
-            y con las personas que conocí en el camino.
-        </p>
-    </section>
-
-    <footer>
-        <p>© 2025 Destras</p>
-    </footer>
-
-    <audio id="clickSound" src="click.mp3"></audio>
-    <audio id="backgroundMusic" src="musica.mp3" loop autoplay></audio>
-
-    <script>
-        const music = document.getElementById("backgroundMusic");
-        const playerMessage = document.getElementById("playerMessage");
-
-        function playClick() {
-            document.getElementById('clickSound').play();
-        }
-
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                showMessage("🎶 Música activada");
-            } else {
-                music.pause();
-                showMessage("⏸ Música pausada");
-            }
-        }
-
-        function setVolume(value) {
-            music.volume = value;
-            showMessage("🔊 Volumen: " + Math.round(value * 100) + "%");
-        }
-
-        function showMessage(text) {
-            playerMessage.textContent = text;
-            playerMessage.classList.add("show");
-            setTimeout(() => {
-                playerMessage.classList.remove("show");
-            }, 2000);
-        }
-    </script>
-
+    <h1>¡Hola, soy Destras!</h1>
+    <p>Apasionado por la tecnología, los servidores de Minecraft y los bots de Discord.  
+       Me encanta crear proyectos únicos y funcionales.</p>
+    <button class="perfil-btn" onclick="window.location.href='perfil.html'">Ver perfil</button>
 </body>
 </html>
