@@ -10,23 +10,23 @@
 
     <style>
         .announcement {
-            background: linear-gradient(90deg, #2c2c2c, #1a1a1a);
+            background: linear-gradient(90deg, #ff0000, #8b0000);
             color: white;
             padding: 15px 20px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             animation: pulse 2s infinite;
             border-radius: 8px;
-            margin: 10px auto;
+            margin: 20px auto;
             max-width: 1000px;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .btn {
@@ -46,89 +46,15 @@
             background-color: #4752C4;
         }
 
-        .btn-secondary {
-            display: inline-block;
-            background-color: #2c2c2c;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s ease;
+        footer {
+            margin-top: 30px;
+        }
+
+        .paused-message {
+            text-align: center;
+            color: #ccc;
+            font-size: 1rem;
             margin-top: 10px;
-            text-align: center;
-        }
-
-        .btn-secondary:hover {
-            background-color: #1a1a1a;
-        }
-
-        .service-cards {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .service-cards .card {
-            flex: 1 1 270px;
-            max-width: 340px;
-            background: #1f1f1f;
-            color: white;
-            padding: 18px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            box-sizing: border-box;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
-
-        .service-cards .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-cards .card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-        }
-
-        .service-cards .card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .service-cards .card .btn {
-            margin-top: auto;
-        }
-
-        @media (max-width: 760px) {
-            .service-cards {
-                flex-direction: column;
-                gap: 14px;
-            }
-
-            .service-cards .card {
-                max-width: 100%;
-                padding: 15px;
-                flex: 1 1 auto;
-            }
-
-            .service-cards .card h3 {
-                font-size: 1.1rem;
-            }
-
-            .service-cards .card p {
-                font-size: 0.9rem;
-            }
-
-            .services h2 {
-                font-size: 1.4rem;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -143,21 +69,21 @@
             <button onclick="toggleMusic()">⏯</button>
             <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
         </div>
-        <div class="player-message" id="playerMessage">¡Bienvenido! Música activada.</div>
+        <div class="player-message" id="playerMessage">🎵 Bienvenido — Música activada.</div>
     </div>
 
     <div class="container header-content">
         <div class="header-text">
             <h1>Destras</h1>
             <p>
-                Tengo 16 años y llevo 3 años configurando servidores Minecraft.  
-                Cada día aprendo más para ofrecerte las mejores soluciones, optimizaciones  
-                y experiencias en tus mundos de juego.  
-                Mi meta: hacer que tu servidor funcione perfecto, seguro y único.
+                Actualmente me encuentro en una pausa indefinida.  
+                No estaré tomando proyectos, configuraciones ni servicios por un tiempo.  
+                Agradezco profundamente a todos los que han confiado en mi trabajo durante estos años.  
+                Volveré cuando sea el momento adecuado 💙.
             </p>
             <div class="buttons">
-                <a href="https://discord.destras.us" target="_blank" class="btn" onclick="playClick()">Entra a mi Discord</a>
-                <a href="https://discord.com/users/1308284651516723263" class="btn btn-secondary" onclick="playClick()">Contactarme</a>
+                <a href="https://discord.destras.us" target="_blank" class="btn" onclick="playClick()">Servidor de Discord</a>
+                <a href="https://discord.com/users/1308284651516723263" class="btn btn-secondary" onclick="playClick()">Perfil</a>
             </div>
         </div>
         <div class="header-skin">
@@ -167,63 +93,26 @@
 </header>
 
 <div class="announcement">
-    Atención: ¡La web está siendo mejorada constantemente para darte la mejor experiencia!
+    🕒 Destras se encuentra en pausa indefinida — No se aceptan proyectos ni servicios por el momento.
 </div>
 
 <section class="about fade-in">
     <div class="container">
-        <h2>Sobre mí</h2>
+        <h2>Un mensaje personal</h2>
         <p>
-            Soy colombiano, tengo 16 años, aprendiendo cada día más sobre configuraciones en  
-            servidores de Minecraft y bots de Discord.  
-            Me apasiona explorar cosas nuevas y mejorar mis habilidades.  
-            Me considero una persona bromista 😄, pero también seria en las ocasiones que lo requieran.  
-            Siempre busco que lo que haga sea con calidad y pasión.
+            A lo largo de los últimos años he aprendido mucho configurando servidores de Minecraft  
+            y creando sistemas para distintos proyectos.  
+            Sin embargo, por motivos personales y para tomar un respiro, he decidido detener mis servicios  
+            por un tiempo indefinido.  
+            Agradezco el apoyo, confianza y buenas experiencias compartidas con todos ❤️.
         </p>
-    </div>
-</section>
-
-<section class="services fade-in">
-    <div class="container">
-        <h2>General</h2>
-        <div class="service-cards">
-            <div class="card">
-                <h3>Configuración de Servidores</h3>
-                <p>Instalación, optimización y mantenimiento profesional de servidores Minecraft.</p>
-            </div>
-            <div class="card">
-                <h3>Asesoría Personalizada</h3>
-                <p>Guías, soporte técnico y soluciones hechas a medida para tu servidor.</p>
-            </div>
-            <div class="card">
-                <h3>Plugins</h3>
-                <p>Instalación y configuración de plugins exclusivos para tu servidor.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="services fade-in">
-    <div class="container">
-        <h2>Trabajando actualmente en</h2>
-        <div class="service-cards">
-            <div class="card">
-                <h3>GalardonesMC (Disponible)</h3>
-                <p>Un servidor Survival 1.21.7 optimizado.</p>
-                <a href="https://discord.gg/kMpVcEq8HF" target="_blank" class="btn">Entra en el Discord</a>
-            </div>
-            <div class="card">
-                <h3>Destras’ Hideout (En creación)</h3>
-                <p>Un servidor de PvP optimizado.</p>
-                <a href="https://discord.destras.us" target="_blank" class="btn btn-secondary">Entra en mi servidor</a>
-            </div>
-        </div>
+        <p class="paused-message">La música y esta web seguirán activos, como un pequeño rincón de recuerdo.</p>
     </div>
 </section>
 
 <footer class="fade-in">
     <div class="container">
-        <p>© 2025 Destras • Todos los derechos reservados</p>
+        <p>© 2025 Destras • Actualmente en pausa indefinida</p>
     </div>
 </footer>
 
@@ -250,7 +139,7 @@
 
     function setVolume(value) {
         music.volume = value;
-        showMessage("🔊 Volumen ajustado: " + Math.round(value * 100) + "%");
+        showMessage("🔊 Volumen: " + Math.round(value * 100) + "%");
     }
 
     function showMessage(text) {
@@ -264,4 +153,6 @@
 
 </body>
 </html>
+
+
 
